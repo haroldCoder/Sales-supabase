@@ -24,6 +24,7 @@
     "jquery": "^3.6.0",
     "node": "^17.3.0",
     "nodejs": "^0.0.0",
+    "nvm": "^0.0.4",
     "paypal-checkout": "^4.0.331",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
