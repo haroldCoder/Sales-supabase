@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 .App {
   text-align: center;
 }
@@ -38,4 +39,60 @@
 }
 .navmain{
   height: 9vh;
+}
+.containe > .row > .card{
+  width: 20% !important;
+  margin: 1% 2%;
+  height: 20.em !important;
+}
+.panel > .containe{
+  margin: 0% 1% !important;
+}
+.cyan:hover{
+  background-color: #71bfff !important;
+}
+#img{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.files{
+  border: 1px solid #000;
+  width: 70%;
+  height: 50vh;
+  box-shadow: 4px 4px 4px 8px #666;
+}
+.file{
+  width: 70%;
+  height: 50vh;
+  position: relative;
+  left: 30%;
+  padding: 10px;
+}
+.file > a{
+  text-align: center;
+  font-size: 100px;
+  position: relative;
+  left: 36%;
+  top: 40%;
+}
+.fa-circle-plus:before{
+  color: #666;
+  font-size: 120px;
+  
+}
+.adds{
+  position: relative;
+  left: 0%;
+  top: 25%;
+  margin: 10%;
+}
+.mainc{
+  width: 100% !important;
+  height: 100%;
 }

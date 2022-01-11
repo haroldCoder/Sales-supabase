@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import fire from '../img/fire.png';
 import $ from 'jquery';
-import { Home } from './home';
-
+import Home from './home';
+import App from '../App';
 
 export class Beginning extends Component{
 	state = {
-		count: 8
+		count: 2
 	}
 	componentDidMount(){
 		setInterval(()=>{
@@ -34,7 +34,9 @@ export class Beginning extends Component{
 		}
 	   else{
 		 return(
-			 <Home/>
+			 <div>
+			   <App/>
+			 </div>
 		 )
 	   }
 	}
