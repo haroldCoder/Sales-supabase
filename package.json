@@ -22,8 +22,6 @@
     "firebase-tools": "^10.0.1",
     "fs": "^0.0.1-security",
     "jquery": "^3.6.0",
-    "nodejs": "^0.0.0",
-    "nvm": "^0.0.4",
     "paypal-checkout": "^4.0.331",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
