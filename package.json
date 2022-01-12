@@ -64,8 +64,6 @@
     ]
   },
   "devDependencies": {
-    "@paypal/paypal-js": "^4.2.2",
-    "i": "^0.3.7",
-    "npm": "^8.3.0"
+    "@paypal/paypal-js": "^4.2.2"
   }
 }
