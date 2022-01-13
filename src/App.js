@@ -1,13 +1,11 @@
 import './App.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import Home from './components/home';
 import Example from './components/example.js';
 import { About } from './components/about.js';
 import { Creations } from './components/creations.js';
-import Search from './components/search';
 import {Toaster} from 'react-hot-toast';
 import Categories from './components/categories.js';
 
