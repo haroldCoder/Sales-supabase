@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import {Link} from 'react-router-dom';
+import Access from '../layout/access.js';
 import Cookies from 'universal-cookie';
+import Login from './login.js';
 
 export class Navigation extends Component{
 	constructor(props){
@@ -79,6 +81,16 @@ export class Navigation extends Component{
 		   $(".login").css("position","absolute");
 		   $(".login").css("left","37%");
 		   $(".login").css("top","20%");
+		if(this.cookies.get("name") == undefined && this.cookies.get("email") == undefined){
+		    ReactDOM.render(
+		   	     <Access/>, document.querySelector(".login")
+		    );
+		}
+		else{
+			ReactDOM.render(
+				<Login/>, document.querySelector(".login")
+			)
+		}
 	}
 	Main = () =>{
 		$(".dropdown").on("click",function(){
