@@ -5,6 +5,6 @@ import {Beginning} from './components/beginning.js';
 import 'bootswatch/dist/morph/bootstrap.min.css';
 
 ReactDOM.render(
-  <h2>hello</h2>,
+  <Beginning/>,
   document.getElementById('root')
 );
