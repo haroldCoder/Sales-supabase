@@ -32,5 +32,12 @@ export class Beginning extends Component{
            </div>
 		)
 		}
+	   else{
+		 return(
+			 <div>
+			   <App/>
+			 </div>
+		 )
+	   }
 	}
 }
