@@ -30,7 +30,7 @@ export class Beginning extends Component{
 	   else{
 		 return(
 			 <div>
-			   <h2>hello</h2>
+			   <App/>
 			 </div>
 		 )
 	   }
