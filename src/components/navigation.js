@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import Access from '../layout/access.js';
 import Cookies from 'universal-cookie';
 import Login from './login.js';
+import Search from './search';
 
 export class Navigation extends Component{
 	constructor(props){
