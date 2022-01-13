@@ -15,9 +15,6 @@ export class Beginning extends Component{
 			  this.setState({count: this.state.count-1});
 		},1200)
 	}
-	componentDidUpdate(){
-		
-	}
 	render(){
 		if(this.state.count != 0){
 		return(
