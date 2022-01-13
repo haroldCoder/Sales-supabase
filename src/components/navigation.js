@@ -9,6 +9,7 @@ import Login from './login.js';
 export class Navigation extends Component{
 	constructor(props){
 		super(props);
+		this.search = new Search();
 	}
 	componentDidMount(){
 		this.Main()
@@ -68,8 +69,8 @@ export class Navigation extends Component{
 					</ul>
 					<form className="d-flex">
 					<span class="material-icons use" onClick={this.user}>account_circle</span>
-					<input class="form-control me-sm-2" type="text" placeholder="search by name" />
-                    <button class="btn btn-secondary my-2 my-sm-0">Search</button>
+					<input class="form-control me-sm-2" type="text" placeholder="search by name" onChange={this.search.searchfor} />
+                    <button class="btn btn-secondary my-2 my-sm-0" onClick={this.search.submitData}>Search</button>
 					</form>
 					</div>
 				</div>
