@@ -11,9 +11,6 @@ import Search from './components/search';
 import {Toaster} from 'react-hot-toast';
 import Categories from './components/categories.js';
 
-const categories = new Categories();
-const search = new Search();
-
 function App() {
   return(
     <Router>
