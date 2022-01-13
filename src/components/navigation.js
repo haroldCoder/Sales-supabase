@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import Example from './example';
 import {Link} from 'react-router-dom';
-
+import Access from '../layout/access.js';
+import Cookies from 'universal-cookie';
+import Login from './login.js';
+import Search from './search';
 
 export class Navigation extends Component{
 	constructor(props){
 		super(props);
+		this.search = new Search();
 	}
 	componentDidMount(){
 		this.Main()
+		this.cookies  = new Cookies();
 	}
 	render(){
 		return(
@@ -64,14 +70,20 @@ export class Navigation extends Component{
 						</li>
 					</ul>
 					<form className="d-flex">
-					<span class="material-icons use">account_circle</span>
-					<input class="form-control me-sm-2" type="text" placeholder="search by name" />
-                    <button class="btn btn-secondary my-2 my-sm-0">Search</button>
+					<span class="material-icons use" onClick={this.user}>account_circle</span>
+					<input class="form-control me-sm-2" type="text" placeholder="search by name" onChange={this.search.searchfor} />
+                    <button class="btn btn-secondary my-2 my-sm-0" onClick={this.search.submitData}>Search</button>
 					</form>
 					</div>
 				</div>
           </nav>
 		)
+	}
+	user = () => {
+		   $("#root").append(`<div class="login"></div>`);
+		   $(".login").css("position","absolute");
+		   $(".login").css("left","37%");
+		   $(".login").css("top","20%");
 	}
 	Main = () =>{
 		$(".dropdown").on("click",function(){
