@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import {Link} from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import Search from './search';
 
 export class Navigation extends Component{
 	constructor(props){
@@ -69,7 +68,7 @@ export class Navigation extends Component{
 					<form className="d-flex">
 					<span class="material-icons use" onClick={this.user}>account_circle</span>
 					<input class="form-control me-sm-2" type="text" placeholder="search by name" onChange={this.search.searchfor} />
-                    <button class="btn btn-secondary my-2 my-sm-0" onClick={this.search.submitData}>Search</button>
+                    <button class="btn btn-secondary my-2 my-sm-0">Search</button>
 					</form>
 					</div>
 				</div>
