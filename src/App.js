@@ -9,7 +9,6 @@ function App() {
   return(
     <Router>
     <div className="main">
-      <Navigation/>
       <div className="panel">
         <Routes>
           <Route path="/" element={<Home/>}/>
