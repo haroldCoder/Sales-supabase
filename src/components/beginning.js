@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import fire from '../img/fire.png';
 import $ from 'jquery';
-import App from '../App';
+import App from '../App.js';
 
 export class Beginning extends Component{
 	state = {

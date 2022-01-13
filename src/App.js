@@ -1,18 +1,15 @@
 import './App.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Beginning } from './components/beginning';
 import $ from 'jquery';
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import Home from './components/home';
-import { Features } from './components/features.js';
 import Example from './components/example.js';
 import { Navigation } from './components/navigation.js';
 import { About } from './components/about.js';
 import { Creations } from './components/creations.js';
 import Search from './components/search';
 import {Toaster} from 'react-hot-toast';
-import Pay from './components/pay.js';
 import Categories from './components/categories.js';
 
 const categories = new Categories();
