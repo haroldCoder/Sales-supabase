@@ -66,7 +66,7 @@ export class Navigation extends Component{
 					</ul>
 					<form className="d-flex">
 					<span class="material-icons use" onClick={this.user}>account_circle</span>
-					<input class="form-control me-sm-2" type="text" placeholder="search by name" onChange={this.search.searchfor} />
+					<input class="form-control me-sm-2" type="text" placeholder="search by name" />
                     <button class="btn btn-secondary my-2 my-sm-0">Search</button>
 					</form>
 					</div>
