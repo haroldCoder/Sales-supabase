@@ -7,7 +7,6 @@ import Cookies from 'universal-cookie';
 export class Navigation extends Component{
 	constructor(props){
 		super(props);
-		this.search = new Search();
 	}
 	componentDidMount(){
 		this.Main()
