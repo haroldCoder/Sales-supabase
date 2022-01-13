@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import fire from '../img/fire.png';
 import $ from 'jquery';
-import App from '../App.js';
 
 export class Beginning extends Component{
 	state = {
@@ -31,7 +30,7 @@ export class Beginning extends Component{
 	   else{
 		 return(
 			 <div>
-			   <App/>
+			   <h2>hello</h2>
 			 </div>
 		 )
 	   }
