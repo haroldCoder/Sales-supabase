@@ -9,7 +9,6 @@ import { About } from './components/about.js';
 import { Creations } from './components/creations.js';
 import Search from './components/search';
 import {Toaster} from 'react-hot-toast';
-import Pay from './components/pay.js';
 import Categories from './components/categories.js';
 
 const categories = new Categories();
