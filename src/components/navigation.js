@@ -64,9 +64,9 @@ export class Navigation extends Component{
 						</li>
 					</ul>
 					<form className="d-flex">
-					<span class="material-icons use" onClick={this.user}>account_circle</span>
+					<span class="material-icons use">account_circle</span>
 					<input class="form-control me-sm-2" type="text" placeholder="search by name" />
-                    <button class="btn btn-secondary my-2 my-sm-0" onClick={this.search.submitData}>Search</button>
+                    <button class="btn btn-secondary my-2 my-sm-0">Search</button>
 					</form>
 					</div>
 				</div>
