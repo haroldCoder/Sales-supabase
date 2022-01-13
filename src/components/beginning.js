@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import fire from '../img/fire.png';
 import $ from 'jquery';
-import Home from './home';
-import App from '../App';
 
 export class Beginning extends Component{
 	state = {
@@ -29,12 +27,5 @@ export class Beginning extends Component{
            </div>
 		)
 		}
-	   else{
-		 return(
-			 <div>
-			   <App/>
-			 </div>
-		 )
-	   }
 	}
 }
