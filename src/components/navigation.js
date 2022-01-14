@@ -6,6 +6,7 @@ import Access from '../layout/access.js';
 import Cookies from 'universal-cookie';
 import Login from './login.js';
 import Search from './search';
+import { Navbar, NavDropdown, Form, FormControl, Button, Nav, Container } from 'react-bootstrap';
 
 export class Navigation extends Component{
 	constructor(props){
@@ -18,13 +19,16 @@ export class Navigation extends Component{
 	}
 	render(){
 		return(
-		<nav className="navmain navbar navbar-expand-lg navbar-dark bg-primary">
-				<div className="container-fluid">
-					<a className="navbar-brand" href="#">Sales</a>
-					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
-					</button>
-					<div className="collapse navbar-collapse" id="navbarColor01">
+			<Navbar bg="primary" className="navbar navbar-expand-lg navbar-dark" expand="lg">
+			<Container fluid>
+				<Navbar.Brand className="text-light sales-brand" bg="light">SalesK</Navbar.Brand>
+				<Navbar.Toggle aria-controls="navbarScroll" />
+				<Navbar.Collapse id="navbarScroll">
+				<Nav
+					className="me-auto my-2 my-lg-0"
+					style={{ maxHeight: '100px' }}
+					navbarScroll
+				>
 					<ul className="navbar-nav me-auto">
 						<li className="nav-item">
 						<Link className="nav-link active" to="/">Home
@@ -68,14 +72,19 @@ export class Navigation extends Component{
 							</div>
 						</li>
 					</ul>
-					<form className="d-flex">
-					<span class="material-icons use" onClick={this.user}>account_circle</span>
-					<input class="form-control me-sm-2" type="text" placeholder="search by name" onChange={this.search.searchfor} />
-                    <button class="btn btn-secondary my-2 my-sm-0" onClick={this.search.submitData}>Search</button>
-					</form>
-					</div>
-				</div>
-          </nav>
+				</Nav>
+				<Form className="d-flex">
+					<FormControl
+					type="search"
+					placeholder="Search"
+					className="me-2"
+					aria-label="Search"
+					/>
+					<Button className="btn-secondary">Search</Button>
+				</Form>
+				</Navbar.Collapse>
+			</Container>
+			</Navbar>
 		)
 	}
 	user = () => {
