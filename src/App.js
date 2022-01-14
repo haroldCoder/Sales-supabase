@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 import $ from 'jquery';
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import Home from './components/home';
@@ -10,7 +10,12 @@ import { Creations } from './components/creations.js';
 import {Toaster} from 'react-hot-toast';
 import Categories from './components/categories.js';
 
+
 function App() {
+  useEffect(()=>{
+    if(window.screen.width <= 600){
+    }
+  })
   return(
     <Router>
     <div className="main">

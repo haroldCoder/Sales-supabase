@@ -41,7 +41,6 @@
   height: 9vh;
 }
 .containe > .row > .card{
-  width: 20% !important;
   margin: 1% 2%;
   height: 20.em !important;
 }
@@ -95,4 +94,29 @@
 .mainc{
   width: 100% !important;
   height: 100%;
+}
+@media  screen and (max-width: 600px) {
+  .navmain{
+    width: 100% !important;
+  }
+  .cont{
+    flex-flow: column;
+  }
+  .cont > .card{
+    width: 98% !important;
+    height: 79% !important;
+    padding: 0 !important;
+    margin: 1% 0 !important;
+  }
+  #buy{
+    margin: 0% !important;
+  }
+  .card-text{
+    margin-bottom: 10px !important;
+  }
+  .add{
+    font-size: 60px !important;
+    left: 43% !important;
+    bottom: 0px !important;
+  }
 }

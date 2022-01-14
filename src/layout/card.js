@@ -27,7 +27,7 @@ class Card extends Component{
                <div class="card-body">
                	<img src={this.props.imgURI} style={{cursor: "pointer"}}/>
                	<p class="card-text">{this.props.description}</p>
-               	<a href="#" class="btn btn-primary">Buy</a>
+               	<a href="#" class="btn btn-primary" id="buy">Buy</a>
 				   {
 					 this.props.remove ?
 					 <span class="material-icons edit" onClick={(e)=>this.Edit(e,this.props.title,this.props.description,this.props.imgURI, this.props.price, this.props.author)} style={{cursor: "pointer"}}>edit</span>
@@ -88,6 +88,7 @@ class Card extends Component{
 		$(".edit").css("border-radius","50%");
 		$(".edit").css("background","#c4d9f5");
 		$(".edit").css("padding","3%");
+		$(".containe > .row > .card").css("width","20%");
 	}
 }
 export default Card;
