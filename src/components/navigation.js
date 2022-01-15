@@ -77,11 +77,12 @@ export class Navigation extends Component{
 				<Form className="d-flex">
 					<FormControl
 					type="search"
-					placeholder="Search"
 					className="me-2"
 					aria-label="Search"
+					placeholder="search by name"
+					onChange={this.search.searchfor}
 					/>
-					<Button className="btn-secondary">Search</Button>
+					<Button className="btn-secondary" onClick={this.search.submitData}>Search</Button>
 				</Form>
 				</Navbar.Collapse>
 			</Container>

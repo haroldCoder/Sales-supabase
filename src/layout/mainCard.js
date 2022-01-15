@@ -28,7 +28,7 @@ class MainCard extends Component{
 				<div class="card mainc" style={{width: "18rem"}}>
 						<span class="material-icons close">cancel</span>
 						<a id="covers" href={this.props.cover} target="_blank" style={{cursor: "grabbing"}}><img src={this.props.cover} class="card-img-top" alt={this.props.title}/></a>
-					<div class="card price" style={{width: "18rem"}}>
+					<div class="card price" style={{width: "26%"}}>
 						<div className="title bg-secondary">
 							<h2 className='card-title text-center'>Price</h2>
 						</div>
@@ -42,7 +42,7 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 						    <h5 class="card-title">{this.props.title}</h5>
 							<h5 className="text-primary">{this.props.author}</h5>
 						</div>
-						<p class="card-text">{this.props.description}</p>
+						<p class="card-text text-cm">{this.props.description}</p>
 						<a href="#" class="btn btn-dark buy" onClick={()=>this.PayMent(this.props.price,this.props.author)}>Buy</a>
 					</div>
 				</div>

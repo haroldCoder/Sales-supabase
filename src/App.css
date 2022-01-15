@@ -41,7 +41,7 @@
   height: 9vh;
 }
 .containe > .row > .card{
-  margin: 1% 2%;
+  margin: 1% .5% 1% 2%;
   height: 20.em !important;
 }
 .panel > .containe{
@@ -94,11 +94,23 @@
 .mainc{
   width: 100% !important;
   height: 100%;
+} 
+.cont > .card > .card-body{
+  padding: 5px !important;
+}
+.card-header{
+  padding: 5.5px !important;
+}
+#covers > img{
+  height: auto !important;
+}
+.mainc > .card-body{
+  padding: 2% !important;
+}
+.text-cm{
+  margin-top: 6% !important;
 }
 @media  screen and (max-width: 600px) {
-  .navmain{
-    width: 100% !important;
-  }
   .cont{
     flex-flow: column;
   }
@@ -128,6 +140,7 @@
   .acces{
     height: 80vh !important;
     width: 100% !important;
+    z-index: 0;
   }
   .acces > form > footer{
     top: 20vh !important;
@@ -137,6 +150,29 @@
     top: 10vh;
   }
   .navbar > .container-fluid{
-    z-index: 1;
+    z-index: 2;
+    padding: 0 !important;
+  }
+  .nav-link{
+    font-size: 18px !important;
+  }
+  .nav-item{
+    padding: 10px !important;
+  }
+  .navbar{
+    padding: 5px !important;
+  }
+  .window{
+    left: 2% !important;
+  }
+  .window > .container{
+    padding: 0 4% !important;
+  }
+  .window > .container > .card{
+    height: 83vh !important;
+  }
+  .card-body > img{
+    width: 100% !important;
+    height: auto !important;
   }
 }
