@@ -119,4 +119,24 @@
     left: 43% !important;
     bottom: 0px !important;
   }
+  .login{
+    top: 8% !important;
+    left: 0% !important;
+    padding: 4% !important;
+    width: 100% !important;
+  }
+  .acces{
+    height: 80vh !important;
+    width: 100% !important;
+  }
+  .acces > form > footer{
+    top: 20vh !important;
+  }
+  .acces > form{
+    position: relative;
+    top: 10vh;
+  }
+  .navbar > .container-fluid{
+    z-index: 1;
+  }
 }

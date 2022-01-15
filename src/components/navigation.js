@@ -73,6 +73,7 @@ export class Navigation extends Component{
 						</li>
 					</ul>
 				</Nav>
+				<span class="material-icons use" onClick={this.user}>account_circle</span>
 				<Form className="d-flex">
 					<FormControl
 					type="search"

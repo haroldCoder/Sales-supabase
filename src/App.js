@@ -14,6 +14,15 @@ import Categories from './components/categories.js';
 function App() {
   useEffect(()=>{
     if(window.screen.width <= 600){
+      $(".part").removeClass("row");
+      $(".part").addClass("column");
+      $(".part > .card").css("width","100%");
+      $(".panel > .container").attr("style","padding: 0 !important");
+      $(".part > .card > .img > img").attr("style","width: 70px");
+      $(".part > .card > .img > img").css("height","10vh");
+      $(".part > .card > .img").attr("style","padding: 3%");
+      $(".navbar > .container-fluid").addClass("bg-primary");
+      $(".navbar > .container-fluid").css("padding-bottom","20px");
     }
   })
   return(

@@ -55,7 +55,7 @@ export class About extends Component{
 	panel = () =>{
 		return(
 			<div className="container">
-				<div className="row">
+				<div className="row part">
 					{
 						this.social.map(e=>(
 						<div className="col-lg-4 d-flex card">
