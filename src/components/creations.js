@@ -38,7 +38,7 @@ export class Creations extends Component{
 			else
 			return(
 				<div className="containe">
-				  <div className="row d-flex">
+				  <div className="row d-flex cont">
 					{
 				       this.state.data.map(e=>(
 				    	  <Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} remove={true} price={e.price}/>			
