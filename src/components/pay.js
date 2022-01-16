@@ -14,7 +14,6 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import EditAdvance from './editAdvance.js';
 const cookie = new Cookies();
-console.log(cookie.get("idpay"));
 
 const stripePromise = loadStripe(cookie.get("idpay"));
 

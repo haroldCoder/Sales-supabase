@@ -93,6 +93,9 @@ class Home extends Component{
 			$(".cont").css("height","90%");
 			$(".containe > .row").css("padding-bottom","20px");
 			$(".containe").css("height","auto");
+			$(".cont").css("justify-content","center");
+			$(".cont").css("width","100%");
+			$(".cont").css("flex-wrap","wrap");
 		}
 	}
 	product = () =>{

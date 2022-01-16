@@ -41,11 +41,11 @@
   height: 9vh;
 }
 .containe > .row > .card{
-  margin: 1% .5% 1% 2%;
+  margin: 1% .5% 1% 3%;
   height: 20.em !important;
 }
 .panel > .containe{
-  margin: 0% 1% !important;
+  margin: 0% .2% !important;
 }
 .cyan:hover{
   background-color: #71bfff !important;
@@ -113,11 +113,13 @@
 @media  screen and (max-width: 600px) {
   .cont{
     flex-flow: column;
+    margin: 0 !important;
+    padding: 1.5% !important;
   }
   .cont > .card{
-    width: 98% !important;
-    height: 79% !important;
-    padding: 0 !important;
+    width: 100% !important;
+    height: 90vh !important;
+    padding: 1.2rem !important;
     margin: 1% 0 !important;
   }
   #buy{
@@ -174,5 +176,8 @@
   .card-body > img{
     width: 100% !important;
     height: auto !important;
+  }
+  .edit{
+    top: 90% !important;
   }
 }

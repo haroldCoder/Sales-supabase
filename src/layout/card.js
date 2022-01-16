@@ -65,10 +65,10 @@ class Card extends Component{
 		);
 	}
 	Style = () =>{     
-		$(".card").css("height","73vh");  
+		$(".card").css("height","82vh");  
 		$(".text").css("height","15%");
 		$(".card-body > img").css("width","auto");
-		$(".card-body > img").css("height","183px");
+		$(".card-body > img").css("height","40%");
 		$(".card-body").css("text-align","center");
 		$(".card-body").css("height","60%");
 		$(".card-body > .btn").css("position","sticky");
@@ -88,7 +88,8 @@ class Card extends Component{
 		$(".edit").css("border-radius","50%");
 		$(".edit").css("background","#c4d9f5");
 		$(".edit").css("padding","3%");
-		$(".containe > .row > .card").css("width","21%");
+		$(".containe > .row > .card").css("width","21.5%");
+		$(".containe > .row > .card").css("min-width","21.5%")
 	}
 }
 export default Card;
