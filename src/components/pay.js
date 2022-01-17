@@ -53,7 +53,7 @@ const CheckoutForm = (props) => {
 const Stripe = (props) => {
   return(
       <Elements stripe={loadStripe(props.idpay)}>
-        <div className="container p-4" style={{width: "100%"}}>
+        <div className="container" style={{width: "100%"}}>
           <div className="row h-100" style={{width: "100%"}}>
             <div className="col-md-4 h-100" style={{width: "100%"}}>
             <CheckoutForm price={props.price}/>

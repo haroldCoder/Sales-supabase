@@ -166,6 +166,7 @@
   }
   .window{
     left: 2% !important;
+    width: 97% !important;
   }
   .window > .container{
     padding: 0 4% !important;
@@ -179,5 +180,40 @@
   }
   .edit{
     top: 90% !important;
+  }
+  .titlem{
+    position: static !important;
+  }
+  .price{
+    top: 62% !important;
+    left: 15% !important;
+    width: 70% !important;
+  }
+  .buy{
+    width: 30% !important;
+  }
+  .card-img-top{
+    width: 100% !important;
+  }
+  .close{
+    font-size: 30px !important;
+    left: 88% !important;
+  }
+  #covers{
+    width: 80% !important;
+    left: 1% !important;
+  }
+  .panelpay{
+    width: 97.5% !important;
+    left: 1% !important;
+  }
+  .panelpay > .container > .row{
+    margin: 0% !important;
+  }
+  .panelpay > .container > .row > .col-md-4{
+    padding-top: 20px;
+  }
+  *{
+    z-index: 0;
   }
 }

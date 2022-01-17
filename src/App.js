@@ -23,6 +23,7 @@ function App() {
       $(".part > .card > .img").attr("style","padding: 3%");
       $(".navbar > .container-fluid").addClass("bg-primary");
       $(".navbar > .container-fluid").css("padding-bottom","20px");
+      $(".add").remove();
     }
   })
   return(
