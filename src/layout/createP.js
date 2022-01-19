@@ -45,7 +45,7 @@ export default class CreateP extends Component{
 		this.setState({"description": e.target.value});
 	}
     onChangePrice = (e) =>{
-		this.setState({"price": e.target.value});
+		this.setState({"price": parseFloat(e.target.value)});
 	}
 	onChangeCategory = (e) =>{
 		this.setState({"category": e.target.value});

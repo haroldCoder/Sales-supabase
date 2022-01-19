@@ -27,6 +27,21 @@ class Home extends Component{
 	state = {
 		data: []
 	}
+	AlgoritmTop = () =>{
+		let fil = this.state.data.map(e=>{
+			return e.price;
+		})
+		for(let i = 0; i<fil.length-1; i++){
+			for(let j = 0; j<fil.length-i-1; j++){
+				if(fil[j] < fil[j+1]){
+					let temp = fil[j];
+					fil[j] = fil[j+1];
+					fil[j+1] = temp;
+				}
+			}
+		}
+		console.log(fil);
+	}
 	getData = async() =>{
 		const res = await axios.get("http://localhost:8000/products");
 		this.setState({data: res.data});
@@ -99,6 +114,7 @@ class Home extends Component{
 		}
 	}
 	product = () =>{
+		this.AlgoritmTop()
 		$("#root").append(`<div class="login"></div>`);
 		$(".login").css("position","absolute");
 		$(".login").css("position","absolute");

@@ -88,8 +88,7 @@ class Card extends Component{
 		$(".edit").css("border-radius","50%");
 		$(".edit").css("background","#c4d9f5");
 		$(".edit").css("padding","3%");
-		$(".containe > .row > .card").css("width","21.5%");
-		$(".containe > .row > .card").css("min-width","21.5%")
+		$(".containe > .row > .card").css("width","23.5%");
 	}
 }
 export default Card;
