@@ -13,14 +13,20 @@ class MainCard extends Component{
 	}
 	componentDidMount(){
 		this.Style()
-		this.getData()
+		this.getDataU()
+		this.getDataP()
 	}
 	state = {
-		data: []
+		datau: [],
+		datap: []
 	};
-	getData = async() => {
+	getDataU = async() => {
 		const res = await axios.get('http://localhost:8000/users');
-		this.setState({data: res.data});
+		this.setState({datau: res.data});
+	}
+	getDataP = async() => {
+		const res = await axios.get('http://localhost:8000/products');
+		this.setState({datap: res.data});
 	}
 	render(){
 		return(
@@ -43,13 +49,13 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 							<h5 className="text-primary">{this.props.author}</h5>
 						</div>
 						<p class="card-text text-cm">{this.props.description}</p>
-						<a href="#" class="btn btn-dark buy" onClick={()=>this.PayMent(this.props.price,this.props.author)}>Buy</a>
+						<a href="#" class="btn btn-dark buy" onClick={()=>this.PayMent(this.props.price,this.props.author, this.props.title)}>Buy</a>
 					</div>
 				</div>
 			</div>
 		);
 	}
-	PayMent = (price,author) =>{
+	PayMent = (price,author,name) =>{
 	   if(this.cookies.get("name") == undefined && this.cookies.get("email") == undefined){
 		    $("#root").append(`<div class="login"></div>`);
 			$(".login").css("position","absolute");
@@ -63,14 +69,21 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 		    )
 		}
 		else{
-			let idpay = this.state.data.filter(e=>{
+			let idpay = this.state.datau.filter(e=>{
 			if(e.name == author){
 				return e;
 			}
 			})
+			let idpro = this.state.datap.filter(e=>{
+				console.log(e);
+				if(e.name == name && e.author == author){
+					return e;
+				}
+			})
+			console.log(idpro[0]._id);
 			$(".panel").append(`<div class="panelpay"></div>`);
 			ReactDOM.render(
-				<Pay price={price} idpay={idpay[0].idpay} />,
+				<Pay price={price} idpay={idpay[0].idpay} idproduct={idpro[0]._id} />,
 				document.querySelector(".panelpay")
 			);	
 			$(".panelpay").css("position","absolute");

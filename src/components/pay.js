@@ -31,6 +31,10 @@ const CheckoutForm = (props) => {
         id,
         amount: props.price * 100
     });
+    console.log(props.idproduct);
+    axios.put('http://localhost:8000/products/'+props.idproduct,{
+     "buys": 0
+    })
   };
 
   return (
@@ -56,7 +60,7 @@ const Stripe = (props) => {
         <div className="container" style={{width: "100%"}}>
           <div className="row h-100" style={{width: "100%"}}>
             <div className="col-md-4 h-100" style={{width: "100%"}}>
-            <CheckoutForm price={props.price}/>
+            <CheckoutForm price={props.price} idpay={props.idpay} idproduct={props.idproduct}/>
             </div>
           </div>
         </div>
@@ -92,7 +96,8 @@ const Paypal = (props) =>{
 };
 
 export default function Pay(props){
+  console.log(props.idproduct);
 	return (
-		<Stripe price={props.price} idpay={props.idpay} />
+		<Stripe price={props.price} idpay={props.idpay} idproduct={props.idproduct} />
 	);
 }

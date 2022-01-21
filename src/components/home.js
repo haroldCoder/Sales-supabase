@@ -8,6 +8,7 @@ import Cookies from 'universal-cookie';
 import Create from './products.create';
 import axios from 'axios';
 import Card from '../layout/card.js';
+import Positioning from './positioning';
 
 class Home extends Component{
 	constructor(props) {
@@ -27,7 +28,7 @@ class Home extends Component{
 	state = {
 		data: []
 	}
-	AlgoritmTop = () =>{
+	AlgoritmExpensive = () =>{
 		let fil = this.state.data.map(e=>{
 			return e.price;
 		})
@@ -40,7 +41,22 @@ class Home extends Component{
 				}
 			}
 		}
-		console.log(fil);
+		return fil;
+	}
+	AlgoritmCheap = () =>{
+		let fil = this.state.data.map(e=>{
+			return e.price;
+		})
+		for(let i = 0; i<fil.length-1; i++){
+			for(let j = 0; j<fil.length-i-1; j++){
+				if(fil[j] > fil[j+1]){
+					let temp = fil[j];
+					fil[j] = fil[j+1];
+					fil[j+1] = temp;
+				}
+			}
+		}
+		return fil;
 	}
 	getData = async() =>{
 		const res = await axios.get("http://localhost:8000/products");
@@ -61,6 +77,8 @@ class Home extends Component{
 	    }
 		else{
 		   return(
+			   <>
+			     <Positioning/>
 			     <div className="containe">
 			        <div className="row d-flex cont">
 					{
@@ -71,6 +89,7 @@ class Home extends Component{
 			        </div>
 					<span class="material-icons add" onClick={this.product}>add_circle</span>
 		         </div>
+			   </>
 		   );
 	}
 	}
@@ -108,13 +127,12 @@ class Home extends Component{
 			$(".cont").css("height","90%");
 			$(".containe > .row").css("padding-bottom","20px");
 			$(".containe").css("height","auto");
-			$(".cont").css("justify-content","center");
+			$(".cont").css("justify-content","flex-start");
 			$(".cont").css("width","100%");
 			$(".cont").css("flex-wrap","wrap");
 		}
 	}
 	product = () =>{
-		this.AlgoritmTop()
 		$("#root").append(`<div class="login"></div>`);
 		$(".login").css("position","absolute");
 		$(".login").css("position","absolute");

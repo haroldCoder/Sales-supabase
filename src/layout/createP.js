@@ -45,7 +45,7 @@ export default class CreateP extends Component{
 		this.setState({"description": e.target.value});
 	}
     onChangePrice = (e) =>{
-		this.setState({"price": parseFloat(e.target.value)});
+		this.setState({"price": e.target.value});
 	}
 	onChangeCategory = (e) =>{
 		this.setState({"category": e.target.value});
@@ -62,7 +62,7 @@ export default class CreateP extends Component{
 			   description: this.state.description,
 			   imgURI: localStorage.getItem("uri"),
 			   author: this.cookies.get("name"),
-			   price: this.state.price,
+			   price: parseFloat(this.state.price).toFixed(2),
 			   category: this.state.category
 		      });
 			  this.product = "Product Created";
@@ -80,7 +80,7 @@ export default class CreateP extends Component{
 				description: this.state.description,
 				imgURI: localStorage.getItem("uri"),
 				author: this.cookies.get("name"),
-				price: this.state.price, 
+				price: parseFloat(this.state.price).toFixed(2), 
 				category: this.state.category
 			   })
 			   this.product = "Modified Product";
