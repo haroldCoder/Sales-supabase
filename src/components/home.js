@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React, {Component, useEffect} from 'react';
+import ReactDOM, { render } from 'react-dom';
 import $ from 'jquery';
 import koder2 from '../img/koder2.png';
 import '@fortawesome/fontawesome-free';
@@ -8,7 +8,6 @@ import Cookies from 'universal-cookie';
 import Create from './products.create';
 import axios from 'axios';
 import Card from '../layout/card.js';
-import Positioning from './positioning';
 
 class Home extends Component{
 	constructor(props) {
@@ -22,46 +21,46 @@ class Home extends Component{
 		this.getData();
 	}
 	componentWillUpdate(){
-		this.getData();
 		this.Style();
+		this.getData()
 	}
 	state = {
 		data: []
-	}
-	AlgoritmExpensive = () =>{
-		let fil = this.state.data.map(e=>{
-			return e.price;
-		})
-		for(let i = 0; i<fil.length-1; i++){
-			for(let j = 0; j<fil.length-i-1; j++){
-				if(fil[j] < fil[j+1]){
-					let temp = fil[j];
-					fil[j] = fil[j+1];
-					fil[j+1] = temp;
-				}
-			}
-		}
-		return fil;
-	}
-	AlgoritmCheap = () =>{
-		let fil = this.state.data.map(e=>{
-			return e.price;
-		})
-		for(let i = 0; i<fil.length-1; i++){
-			for(let j = 0; j<fil.length-i-1; j++){
-				if(fil[j] > fil[j+1]){
-					let temp = fil[j];
-					fil[j] = fil[j+1];
-					fil[j+1] = temp;
-				}
-			}
-		}
-		return fil;
 	}
 	getData = async() =>{
 		const res = await axios.get("http://localhost:8000/products");
 		this.setState({data: res.data});
 		$(".row").css("position","static");
+	}
+	AlgoritmExpensive = () =>{
+		let fil = this.state.data.map(e=>{
+			return e;
+		})
+		for(let i = 0; i<fil.length-1; i++){
+			for(let j = 0; j<fil.length-i-1; j++){
+				if(fil[j].price < fil[j+1].price){
+					let temp = fil[j];
+					fil[j] = fil[j+1];
+					fil[j+1] = temp;
+				}
+			}
+		}
+		this.setState({data: fil});
+	}
+	AlgoritmCheap = () =>{
+		let fil = this.state.data.map(e=>{
+			return e;
+		})
+		for(let i = 0; i<fil.length-1; i++){
+			for(let j = 0; j<fil.length-i-1; j++){
+				if(fil[j].price > fil[j+1].price){
+					let temp = fil[j];
+					fil[j] = fil[j+1];
+					fil[j+1] = temp;
+				}
+			}
+		}
+		this.setState({data: fil});
 	}
 	render(){
 		if(this.state.data == 0){
@@ -75,17 +74,16 @@ class Home extends Component{
 				</div>
 			);
 	    }
-		else{
+		else{ 
 		   return(
-			   <>
-			     <Positioning/>
+			   <>	
 			     <div className="containe">
 			        <div className="row d-flex cont">
 					{
 			        		this.state.data.map(e=>(
 			        			<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} price={e.price}/>
 			        		))
-			        	}
+			        }
 			        </div>
 					<span class="material-icons add" onClick={this.product}>add_circle</span>
 		         </div>
@@ -93,7 +91,6 @@ class Home extends Component{
 		   );
 	}
 	}
-	
 	Style = () =>{
 		if(this.state.data == 0){
 			$("body").css("background","#d9e3f1");

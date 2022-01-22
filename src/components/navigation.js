@@ -7,6 +7,9 @@ import Cookies from 'universal-cookie';
 import Login from './login.js';
 import Search from './search';
 import { Navbar, NavDropdown, Form, FormControl, Button, Nav, Container } from 'react-bootstrap';
+import {Dropdown} from 'react-bootstrap';
+import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 
 export class Navigation extends Component{
 	constructor(props){
@@ -41,16 +44,16 @@ export class Navigation extends Component{
 						<li className="nav-item">
 						<Link className="nav-link" to="/about">About</Link>
 						</li>
-						<li className="nav-item item1">
-						<a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
-						<div className="dropdown-menu submenu1">
+						<Dropdown className="nav-item item1">
+						<DropdownToggle id="btn-e" className="text-white nav-link dropdown-toggle tex-white" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</DropdownToggle>
+						<DropdownMenu className="dropdown-menu submenu1">
 							<Link className="dropdown-item" id="onl" to="/">products online</Link>
 							<Link className="dropdown-item" id="exa" to="/examples">product examples</Link>
-						</div>
-						</li>
-						<li className="nav-item" id="item">
-						<a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
-						<div className="dropdown-menu" id="submenu">
+						</DropdownMenu>
+						</Dropdown>
+						<Dropdown className="nav-item" id="item">
+						<DropdownToggle id="btn-e" className="text-white nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category</DropdownToggle>
+						<DropdownMenu className="dropdown-menu" id="submenu">
 							<Link className="dropdown-item" to="/*/foot">Foot</Link>
 							<Link className="dropdown-item" to="/*/tecnology">Tecnology</Link>
 							<Link className="dropdown-item" to="/*/clothes">Clothes</Link>
@@ -61,16 +64,16 @@ export class Navigation extends Component{
 							<Link className="dropdown-item" to="/*/car hire">Car hire</Link>
 							<Link className="dropdown-item" to="/*/children">Children</Link>
 							<Link className="dropdown-item" to="/*/construction">Construction</Link>
-						</div>
-						</li>
-						<li className="nav-item item3">
-							<a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">settings</a>
-							<div className="dropdown-menu submenu3">
+						</DropdownMenu>
+						</Dropdown>
+						<Dropdown className="nav-item item3">
+							<DropdownToggle id="btn-e" className=" text-white nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">settings</DropdownToggle>
+							<DropdownMenu className="dropdown-menu submenu3">
 								<p className="bg-secondary">mode</p>
 								<button className="dropdown-item bg-dark" onClick={() =>{$("body").removeClass("bg-secondary"); $("body").addClass("bg-dark"); $(".card").addClass("bg-dark")}}>mode dark</button>
 								<button className="dropdown-item bg-light" onClick={()=>{$("body").removeClass("bg-dark"); $("body").css("background","#d9e3f1");  $(".card").removeClass("bg-dark")}}>mode light</button>
-							</div>
-						</li>
+							</DropdownMenu>
+						</Dropdown>
 					</ul>
 				</Nav>
 				<span class="material-icons use" onClick={this.user}>account_circle</span>
@@ -106,21 +109,9 @@ export class Navigation extends Component{
 		}
 	}
 	Main = () =>{
-		$(".dropdown").on("click",function(){
-			$(".dropdown-menu").slideToggle(300);
-		})
 		$(".use").css("cursor","pointer");
 		$(".use").css("font-size","7vh");
 		$(".use").css("color","#FFF");
 		$(".use").css("margin-right","20px");
-		$(".item1").click(function() {
-			$(".submenu1").slideToggle(500);
-		});
-		$("#item").click(function() {
-			$("#submenu").slideToggle(500);
-		})
-		$(".item3").click(function() {
-			$(".submenu3").slideToggle(500);
-		})
 	}
 }

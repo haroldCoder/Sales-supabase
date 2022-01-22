@@ -4,7 +4,7 @@ import fire from '../img/fire.png';
 import $ from 'jquery';
 import App from '../App';
 
-export class Beginning extends Component{
+export default class Beginning extends Component{
 	state = {
 		count: 2
 	}
@@ -12,7 +12,11 @@ export class Beginning extends Component{
 		setInterval(()=>{
 			if(this.state.count != 0)
 			  this.setState({count: this.state.count-1});
-		},1200)
+		},1200);
+		this.render();
+	}
+	componentDidUpdate(){
+		this.render();
 	}
 	render(){
 		if(this.state.count != 0){
