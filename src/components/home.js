@@ -8,24 +8,23 @@ import Cookies from 'universal-cookie';
 import Create from './products.create';
 import axios from 'axios';
 import Card from '../layout/card.js';
+import Positioning from './positioning';
 
 class Home extends Component{
 	constructor(props) {
 		super(props);
 		this.cookies = new Cookies();
-	}
-	componentDidMount(){
-		if(window.location.pathname == "/"){
-			this.Style()
-		}
-		this.getData();
-	}
-	componentWillUpdate(){
-		this.Style();
 		this.getData()
+		this.Style()
 	}
 	state = {
 		data: []
+	}
+	componentDidMount() {
+		this.Style()
+	}
+	componentDidUpdate(){
+		this.Style()
 	}
 	getData = async() =>{
 		const res = await axios.get("http://localhost:8000/products");
@@ -74,9 +73,12 @@ class Home extends Component{
 				</div>
 			);
 	    }
-		else{ 
+		else{
 		   return(
 			   <>	
+			   <div className="filter">
+				   <Positioning/>
+			   </div>
 			     <div className="containe">
 			        <div className="row d-flex cont">
 					{
@@ -85,7 +87,7 @@ class Home extends Component{
 			        		))
 			        }
 			        </div>
-					<span class="material-icons add" onClick={this.product}>add_circle</span>
+					<span className="material-icons add" onClick={this.product}>add_circle</span>
 		         </div>
 			   </>
 		   );
@@ -103,22 +105,11 @@ class Home extends Component{
 			$(".panel > .container > .err > .logo").css("height","30vh");
 			$(".panel > .container > .err > .logo").css("opacity",".9");
 			$(".add").css("position","fixed");
-			$(".add").css("left","93%");
 			$(".add").css("top","88vh");
-			$(".add").css("font-size","10vh");
-			$(".add").css("color","#464850");
-			$(".add").css("cursor","pointer");
 		}
 		else{
 			$(".panel").css("height","auto");
 			$("body").css("background","#BBB");
-			$(".add").css("position","relative");
-			$(".add").css("left","93%");
-			$(".add").css("bottom","2vh");
-			$(".add").css("top","0");
-			$(".add").css("font-size","10vh");
-			$(".add").css("color","#464850");
-			$(".add").css("cursor","pointer");
 			$(".containe").css("height","100%");
 			$(".cont").css("position","static")
 			$(".cont").css("height","90%");
@@ -128,6 +119,13 @@ class Home extends Component{
 			$(".cont").css("width","100%");
 			$(".cont").css("flex-wrap","wrap");
 		}
+			$(".add").css("position","relative");
+			$(".add").css("left","93%");
+			$(".add").css("bottom","2vh");
+			$(".add").css("top","0");
+			$(".add").css("font-size","10vh");
+			$(".add").css("color","#464850");
+			$(".add").css("cursor","pointer");
 	}
 	product = () =>{
 		$("#root").append(`<div class="login"></div>`);

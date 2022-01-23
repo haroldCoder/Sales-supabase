@@ -98,10 +98,10 @@ class Positioning extends Component{
 		)
 	}
 	Style = () =>{
-		$(".fill").css("z-index","4")
-		$(".fill").css("position","fixed");
-		$(".fill").css("left","92%");
-		$(".fill").css("top","12%");
+		$(".filter").css("z-index","4")
+		$(".filter").css("position","fixed");
+		$(".filter").css("left","92%");
+		$(".filter").css("top","12%");
 		$(".fill > #dropdown-autoclose-true").css("border-radius","8px");
 		$("#dropdown-autoclose-true").css("background","#388DFC99")
 	}
