@@ -61,6 +61,7 @@
     ]
   },
   "devDependencies": {
-    "@paypal/paypal-js": "^4.2.2"
+    "@paypal/paypal-js": "^4.2.2",
+    "dotenv": "^14.3.0"
   }
 }

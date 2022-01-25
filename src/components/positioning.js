@@ -4,6 +4,7 @@ import $ from 'jquery';
 import {Dropdown} from 'react-bootstrap';
 import axios from 'axios';
 import Card from '../layout/card';
+import Home from './home';
 
 class Positioning extends Component{
 	constructor(props){
@@ -16,6 +17,7 @@ class Positioning extends Component{
 	}
 	componentDidUpdate(){
 		this.getData()
+		this.Style()
 	}
 	state = {
 		data: []
@@ -55,12 +57,15 @@ class Positioning extends Component{
 		}
 		ReactDOM.render(
 			<>
+			<h2 className='mb-0 my-1 ml-1 p-2 bg-light text-primary' style={{textAlign: "center"}}>Products Expensives</h2>
+			<div className='row d-flex cont'>
 			    {
 			        fil.map(e=>(
 			        	<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} price={e.price}/>
 			        ))
-			    }			
-			</>, document.querySelector(".cont")
+			    }
+			</div>			
+			</>, document.querySelector(".containe")
 		)
 	}
 	AlgoritmCheap = () =>{
@@ -78,24 +83,22 @@ class Positioning extends Component{
 		}
 		ReactDOM.render(
 			<>
+			<h2 className='mb-0 my-1 ml-1 p-2 bg-light text-primary' style={{textAlign: "center"}}>Products Cheaps</h2>
+			<div className='row d-flex cont'>
 			    {
 			        fil.map(e=>(
 			        	<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} price={e.price}/>
 			        ))
-			    }			
-			</>, document.querySelector(".containe > .cont")
+			    }
+			</div>			
+			</>, document.querySelector(".containe")
 		)
 	}
 	RealProducts = () =>{
 		ReactDOM.render(
-			<>
-			    {
-			        this.state.data.map(e=>(
-			        	<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} price={e.price}/>
-			        ))
-			    }			
-			</>, document.querySelector(".cont")
-		)
+			<Home/>,
+            document.querySelector(".panel")
+		);
 	}
 	Style = () =>{
 		$(".filter").css("z-index","4")

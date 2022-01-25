@@ -14,7 +14,6 @@ class Home extends Component{
 	constructor(props) {
 		super(props);
 		this.cookies = new Cookies();
-		this.getData()
 		this.Style()
 	}
 	state = {
@@ -22,9 +21,11 @@ class Home extends Component{
 	}
 	componentDidMount() {
 		this.Style()
+		this.getData()
 	}
-	componentDidUpdate(){
+	componentWillUpdate(){
 		this.Style()
+		this.getData()
 	}
 	getData = async() =>{
 		const res = await axios.get("http://localhost:8000/products");
@@ -106,6 +107,10 @@ class Home extends Component{
 			$(".panel > .container > .err > .logo").css("opacity",".9");
 			$(".add").css("position","fixed");
 			$(".add").css("top","88vh");
+			$(".add").css("font-size","10vh");
+			$(".add").css("color","#464850");
+			$(".add").css("cursor","pointer");
+			$(".add").css("left","93%");
 		}
 		else{
 			$(".panel").css("height","auto");
@@ -118,7 +123,6 @@ class Home extends Component{
 			$(".cont").css("justify-content","flex-start");
 			$(".cont").css("width","100%");
 			$(".cont").css("flex-wrap","wrap");
-		}
 			$(".add").css("position","relative");
 			$(".add").css("left","93%");
 			$(".add").css("bottom","2vh");
@@ -126,6 +130,8 @@ class Home extends Component{
 			$(".add").css("font-size","10vh");
 			$(".add").css("color","#464850");
 			$(".add").css("cursor","pointer");
+		}
+			
 	}
 	product = () =>{
 		$("#root").append(`<div class="login"></div>`);

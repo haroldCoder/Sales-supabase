@@ -6,12 +6,13 @@ notesctrl.getproducts = async(req,res)=>{
     res.json(product);	
 } 
 notesctrl.createproducts = async(req,res)=>{
-	const {name, description, imgURI, author} = req.body;
+	const {name, description, imgURI, author, price} = req.body;
 	const product = new products({
               name: name,
 		      description: description,
               imgURI: imgURI,
-			  author: author
+			  author: author,
+			  price: price
 	});
 	await product.save();
 	res.json("note create");

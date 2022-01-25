@@ -6,15 +6,27 @@ const app  =  express();
 const cors = require('cors')
 const mongoose = require('mongoose');
 app.use(cors())
-app.use(express.json({limit: '10tb'}));
+app.use(express.json());
 const url = 'mongodb+srv://manuel:12345@702.s3tgn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const port =  8000;
-app.use(bodyParser.json());
-app.use(logger('dev'));
+app.use(bodyParser.json())
 const Stripe = require('stripe');
+const uri = "mongodb+srv://koder:koder@sales.wkapo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+app.use('/products',require('./routes/products.js'));
+require('dotenv').config();
 
+mongoose.connect(uri,{
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
 
-mongodb.MongoClient.connect(url, (error, database) => {
+const connection = mongoose.connection;
+
+connection.once('open',()=>{
+    console.log('db is connected');
+})
+
+/*mongodb.MongoClient.connect(url, (error, database) => {
     //console.log(url);
     if(error) return process.exit(1);
     const db = database.db('products');
@@ -84,10 +96,11 @@ mongodb.MongoClient.connect(url, (error, database) => {
         });
     });
 
-    const stripe = new Stripe('sk_test_51KDe8IB1qqz3uOspSqBs3qsaIehItIOlNnQMVayeVwcojS8rYoAHg3yPH7MsXoHOLO2YCI1Lz1hnwq3uMbQmNxL100xb84zMOC');
 
 
-    app.post('/api/checkout', async(req,res)=>{
+});*/
+const stripe = new Stripe('sk_test_51KDe8IB1qqz3uOspSqBs3qsaIehItIOlNnQMVayeVwcojS8rYoAHg3yPH7MsXoHOLO2YCI1Lz1hnwq3uMbQmNxL100xb84zMOC');
+app.post('/api/checkout', async(req,res)=>{
        const {id, amount} = req.body;
        const payment = await stripe.paymentIntents.create({
            amount,
@@ -101,5 +114,4 @@ mongodb.MongoClient.connect(url, (error, database) => {
     })
     app.listen(port, () => {
     console.log(`Server on port ${port}`);
-});
 });
