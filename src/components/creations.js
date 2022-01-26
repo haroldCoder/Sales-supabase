@@ -11,14 +11,6 @@ export class Creations extends Component{
 		super(props);
 		this.cookies = new Cookies();
 	}
-	componentDidMount(){
-		this.getProductCreate();
-		this.Style();
-	}
-	componentDidUpdate(){
-		this.getProductCreate()
-		this.Style()
-	}
 	state = {
 		data: []
 	};
@@ -27,7 +19,9 @@ export class Creations extends Component{
 		this.setState({data: res.data});
 	}
 	render(){
-			if(this.state.data == 0)
+		this.getProductCreate();
+		this.Style()
+			if(this.state.data == 0){
 				return(
 					<div className="container d-flex">
 						<div className="info">
@@ -35,18 +29,20 @@ export class Creations extends Component{
 						</div>
 					</div>
 				);
-			else
-			return(
-				<div className="containe">
-				  <div className="row d-flex cont">
-					{
-				       this.state.data.map(e=>(
-				    	  <Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} remove={true} price={e.price}/>			
-				       ))
-				   }
-				  </div>	
-			    </div>
-			);	
+			}	
+			else{
+				return(
+					<div className="containe">
+						<div className="row d-flex cont">
+							{
+								this.state.data.map(e=>(
+									<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} remove={true} price={e.price}/>			
+								))
+						    }
+						</div>	
+					</div>
+			    );
+			} 	
 	}
 	Style = () =>{
 		if(this.state.data == 0){
@@ -59,8 +55,11 @@ export class Creations extends Component{
 			$(".panel > .container > .info > img").css("height","500px");
 			$(".container").css("padding","30px 0 0 0");
 		}
-		    $("body").css("background","#d9e3f1");
+		else{
+			$("body").css("background","#d9e3f1");
 			$(".containe").css("padding"," 10px 0 0 0");
 		    $(".containe > .row").css("height","100%");
+		}
+		   
 	}
 }

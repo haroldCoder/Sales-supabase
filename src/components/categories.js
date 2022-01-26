@@ -3,6 +3,7 @@ import ReactDOM, { render } from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
 import Card from '../layout/card.js'
+import Positioning from './positioning.js';
 
 export default class Categories extends Component {
 	constructor(props) {
@@ -52,7 +53,9 @@ export default class Categories extends Component {
 	}
 	Foot = () =>{
 		return(
+			<>
 			<div className="containe">
+			<Positioning params={"Foot"}/>
 			<div className="row cont">
 			   {
 				  this.state.data.map((e)=>
@@ -63,12 +66,15 @@ export default class Categories extends Component {
 			      ) 
 			   }
 			</div>
-			</div>
+			</div>			
+			</>
 		)
 	}
 	Tecnology = () =>{
 		return(
+			<>
 			<div className="containe">
+			<Positioning params={"Tecnology"}/>
 			<div className="row cont">
 			   {
 				  this.state.data.map((e)=>
@@ -79,7 +85,8 @@ export default class Categories extends Component {
 			      ) 
 			   }
 			</div>
-			</div>
+			</div>			
+			</>
 		)
     }
 	Clothes = () =>{

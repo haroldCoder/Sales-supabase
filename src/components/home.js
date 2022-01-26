@@ -10,57 +10,26 @@ import axios from 'axios';
 import Card from '../layout/card.js';
 import Positioning from './positioning';
 
-class Home extends Component{
+export class Home extends Component{
 	constructor(props) {
 		super(props);
 		this.cookies = new Cookies();
 		this.Style()
 	}
+	componentDidMount() {
+		this.getData()
+		this.getData()
+		this.Style()
+	}
+	componentDidUpdate(){
+		this.Style()
+	}
 	state = {
 		data: []
-	}
-	componentDidMount() {
-		this.Style()
-		this.getData()
-	}
-	componentWillUpdate(){
-		this.Style()
-		this.getData()
 	}
 	getData = async() =>{
 		const res = await axios.get("http://localhost:8000/products");
 		this.setState({data: res.data});
-		$(".row").css("position","static");
-	}
-	AlgoritmExpensive = () =>{
-		let fil = this.state.data.map(e=>{
-			return e;
-		})
-		for(let i = 0; i<fil.length-1; i++){
-			for(let j = 0; j<fil.length-i-1; j++){
-				if(fil[j].price < fil[j+1].price){
-					let temp = fil[j];
-					fil[j] = fil[j+1];
-					fil[j+1] = temp;
-				}
-			}
-		}
-		this.setState({data: fil});
-	}
-	AlgoritmCheap = () =>{
-		let fil = this.state.data.map(e=>{
-			return e;
-		})
-		for(let i = 0; i<fil.length-1; i++){
-			for(let j = 0; j<fil.length-i-1; j++){
-				if(fil[j].price > fil[j+1].price){
-					let temp = fil[j];
-					fil[j] = fil[j+1];
-					fil[j+1] = temp;
-				}
-			}
-		}
-		this.setState({data: fil});
 	}
 	render(){
 		if(this.state.data == 0){
@@ -131,7 +100,7 @@ class Home extends Component{
 			$(".add").css("color","#464850");
 			$(".add").css("cursor","pointer");
 		}
-			
+		$(".row").css("position","static");	
 	}
 	product = () =>{
 		$("#root").append(`<div class="login"></div>`);
@@ -158,4 +127,3 @@ class Home extends Component{
 	}
 	}
 }
-export default Home;

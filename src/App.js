@@ -2,7 +2,7 @@ import './App.css';
 import React, {useEffect} from 'react';
 import $ from 'jquery';
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
-import Home from './components/home';
+import { Home } from './components/home.js';
 import Example from './components/example.js';
 import { Navigation } from './components/navigation.js';
 import { About } from './components/about.js';
@@ -46,9 +46,8 @@ function App() {
           <Route path="/*/children" element={<Categories cat="children"/>}/>
           <Route path="/*/constructor" element={<Categories cat="contructor"/>}/>
         </Routes>
+        <Toaster position="top-center" reverseOrder={false}/>
       </div>
-      <Toaster position="top-center"
-					reverseOrder={false}/>
     </div>
     </Router>
   );
