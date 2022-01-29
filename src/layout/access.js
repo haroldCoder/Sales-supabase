@@ -35,6 +35,7 @@ class Access extends Component{
 		$(".rem").css("cursor","pointer");
 		$(".rem").on("click",function(){
 			$(".login").remove();
+			$(".log").remove();
 		})
 		this.getData()
 	}
@@ -74,6 +75,7 @@ class Access extends Component{
 		this.setState({email: ''});
 		this.setState({password: ''});
 		$(".login").remove()
+		$(".log").remove()
 		e.preventDefault()
 	}
 	render(){
@@ -132,7 +134,8 @@ class Access extends Component{
 				"imageurl": this.cookie.get("imageurl")
 	        });
 		}
-		$(".login").remove()	
+		$(".login").remove()
+		$(".log").remove()	
 	}
 }
 export default Access;

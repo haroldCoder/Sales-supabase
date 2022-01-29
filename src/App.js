@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useEffect} from 'react';
 import $ from 'jquery';
-import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import {BrowserRouter,Route,Routes} from 'react-router-dom';
 import { Home } from './components/home.js';
 import Example from './components/example.js';
 import { Navigation } from './components/navigation.js';
@@ -26,7 +26,7 @@ function App() {
     }
   })
   return(
-    <Router>
+    <BrowserRouter>
     <div className="main">
       <Navigation/>
       <div className="panel">
@@ -49,7 +49,7 @@ function App() {
         <Toaster position="top-center" reverseOrder={false}/>
       </div>
     </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 $("html").css("height", "auto");

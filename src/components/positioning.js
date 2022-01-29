@@ -4,7 +4,7 @@ import $, { param } from 'jquery';
 import {Dropdown} from 'react-bootstrap';
 import axios from 'axios';
 import Card from '../layout/card';
-import { Home } from './home';
+import {Home} from './home';
 
 class Positioning extends Component{
 	constructor(props){
@@ -12,11 +12,9 @@ class Positioning extends Component{
 	}
 	componentDidMount(){
 		this.getData();
-		this.render()
 		this.Style()
 	}
 	componentDidUpdate(){
-		this.getData()
 		this.Style()
 	}
 	state = {

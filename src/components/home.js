@@ -15,20 +15,21 @@ export class Home extends Component{
 		super(props);
 		this.cookies = new Cookies();
 		this.Style()
+		
 	}
 	componentDidMount() {
-		this.getData()
-		this.getData()
 		this.Style()
+		this.getData()
 	}
 	componentDidUpdate(){
 		this.Style()
+		this.getData()
 	}
 	state = {
 		data: []
 	}
 	getData = async() =>{
-		const res = await axios.get("http://localhost:8000/products");
+		const res = await axios.get('http://localhost:8000/products');
 		this.setState({data: res.data});
 	}
 	render(){

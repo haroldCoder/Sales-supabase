@@ -13,10 +13,6 @@ export default class Beginning extends Component{
 			if(this.state.count != 0)
 			  this.setState({count: this.state.count-1});
 		},1200);
-		this.render();
-	}
-	componentDidUpdate(){
-		this.render();
 	}
 	render(){
 		if(this.state.count != 0){
