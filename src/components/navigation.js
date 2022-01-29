@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import {Link} from 'react-router-dom';
+import {Link, Outlet, NavLink} from 'react-router-dom';
 import Access from '../layout/access.js';
 import Cookies from 'universal-cookie';
 import Login from './login.js';
@@ -34,12 +34,12 @@ export class Navigation extends Component{
 				>
 					<ul className="navbar-nav me-auto">
 						<li className="nav-item">
-						<Link className="nav-link active" to="/">Home
+						<NavLink className="nav-link active" to="/">Home
 							<span className="visually-hidden">(current)</span>
-						</Link>
+						</NavLink>
 						</li>
 						<li className="nav-item">
-						<Link className="nav-link" to="/creations">Creations</Link>
+						<NavLink className="nav-link" to="/creations">Creations</NavLink>
 						</li>
 						<li className="nav-item">
 						<Link className="nav-link" to="/about">About</Link>
@@ -76,6 +76,7 @@ export class Navigation extends Component{
 						</Dropdown>
 					</ul>
 				</Nav>
+				<Outlet/>
 				<span class="material-icons use" onClick={this.user}>account_circle</span>
 				<Form className="d-flex">
 					<FormControl

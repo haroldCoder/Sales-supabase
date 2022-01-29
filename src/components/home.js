@@ -45,7 +45,7 @@ export class Home extends Component{
 			);
 	    }
 		else{
-		   return(
+            return(
 			   <>	
 			   <div className="filter">
 				   <Positioning/>
@@ -61,8 +61,9 @@ export class Home extends Component{
 					<span className="material-icons add" onClick={this.product}>add_circle</span>
 		         </div>
 			   </>
-		   );
+		   );		
 	}
+		   
 	}
 	Style = () =>{
 		if(this.state.data == 0){

@@ -17,7 +17,6 @@ export class Creations extends Component{
 		this.Style()
 	}
 	componentDidUpdate(){
-		this.getProductCreate()
 		this.Style()
 	}
 	state = {
@@ -29,6 +28,7 @@ export class Creations extends Component{
 		this.setState({data: res.data});
 	}
 	render(){
+		this.getProductCreate()
 			if(this.state.data == 0){
 				return(
 					<div className="container d-flex">
@@ -49,8 +49,8 @@ export class Creations extends Component{
 							}
 						</div>	
 					</div>
-				);						
-			} 	
+				)						
+			}
 	}
 	Style = () =>{
 		if(this.state.data == 0){
