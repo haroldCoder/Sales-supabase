@@ -12,7 +12,7 @@ export class Creations extends Component{
 		super(props);
 		this.cookies = new Cookies();
 	}
-	componentDidMount(){
+	async componentDidMount(){
 		this.getProductCreate();
 		this.Style()
 	}

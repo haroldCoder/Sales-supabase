@@ -50,14 +50,14 @@ export default class CreateP extends Component{
 	onChangeCategory = (e) =>{
 		this.setState({"category": e.target.value});
 	}
-	Submit = (create,title,description,imgURI,price) =>{
+	Submit = async(create,title,description,imgURI,price) =>{
 		let id;
 		if(this.state.category == ""){
 			this.state.category = $(".category").val();
 		}
 		if(create == true)
 			 if(this.state.name != "" && this.state.description != ""){
-		      axios.post('http://localhost:8000/products',{
+		      await axios.post('http://localhost:8000/products',{
 			   name: this.state.name,
 			   description: this.state.description,
 			   imgURI: localStorage.getItem("uri"),
@@ -75,7 +75,7 @@ export default class CreateP extends Component{
 				   if(e.name == title)
 				    return e;
 			   })
-			   axios.put('http://localhost:8000/products/'+id[0]._id,{
+			   await axios.put('http://localhost:8000/products/'+id[0]._id,{
 				name: this.state.name,
 				description: this.state.description,
 				imgURI: localStorage.getItem("uri"),

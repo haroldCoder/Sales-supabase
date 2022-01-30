@@ -17,11 +17,11 @@ export class Home extends Component{
 		this.Style()
 		
 	}
-	componentDidMount() {
+	async componentDidMount() {
 		this.Style()
 		this.getData()
 	}
-	componentDidUpdate(){
+	async componentDidUpdate(){
 		this.Style()
 		this.getData()
 	}
