@@ -70,7 +70,7 @@ export class Navigation extends Component{
 							<DropdownToggle id="btn-e" className=" text-white nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">settings</DropdownToggle>
 							<DropdownMenu className="dropdown-menu submenu3">
 								<p className="bg-secondary">mode</p>
-								<button className="dropdown-item bg-dark" onClick={() =>{$("body").removeClass("bg-secondary"); $("body").addClass("bg-dark"); $(".card").addClass("bg-dark")}}>mode dark</button>
+								<button className="dropdown-item bg-dark" onClick={() =>{$("body").removeClass("bg-secondary"); $("body").addClass("bg-dark"); $(".card").removeClass("bg-white"); $(".card").addClass("bg-dark")}}>mode dark</button>
 								<button className="dropdown-item bg-light" onClick={()=>{$("body").removeClass("bg-dark"); $("body").css("background","#d9e3f1");  $(".card").removeClass("bg-dark")}}>mode light</button>
 							</DropdownMenu>
 						</Dropdown>

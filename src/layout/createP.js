@@ -96,7 +96,7 @@ export default class CreateP extends Component{
 		return(
 			<div className="container">
 			  <div className="card create p-5">
-				<div className="file d-flex">
+				<div className="file d-flex" style={{flexFlow: "column"}}>
 					<i className="fa-solid fa-circle-plus adds" id="urlSelect" onClick={this.click}></i>
 					<input type="file" name="img" id="img" onChange={this.load}/>
 					<section className="files">
@@ -105,15 +105,15 @@ export default class CreateP extends Component{
 				<div className="card-body d-flex m-1">
 				<form>
 					<div class="mb-5 mt-2">
-						<label for="exampleInputEmail1" className="form-label">product title</label>
+						<label for="exampleInputEmail1" className="form-label text-dark">product title</label>
 						<input type="email" className="form-control cyan" id="name" aria-describedby="emailHelp" onChange={this.onChangeName} value={this.state.name}/>
 					</div>
 					<div class="mb-3">
-						<label for="exampleInputPassword1" className="form-label">product description</label>
+						<label for="exampleInputPassword1" className="form-label text-dark">product description</label>
 						<input type="text" className="form-control cyan" id="description" onChange={this.onChangeDescription} value={this.state.description}/>
 					</div>
 					<div class="mb-3">
-						<label for="exampleInputPassword1" className="form-label">product price</label>
+						<label for="exampleInputPassword1" className="form-label text-dark">product price</label>
 						<input type="number" className="form-control cyan" id="description" onChange={this.onChangePrice} value={this.state.price}/>
 					</div>
 					<div className="mb-3">
@@ -131,22 +131,25 @@ export default class CreateP extends Component{
 							<option value="Construction">Construction</option>
 						</select>
 					</div>
+					<button className="btn btn-primary cyan" onClick={(e)=>{this.Submit(this.props.create, this.props.title); toast.success(this.product)}} style={{width: "40%"}}><i className="fa-solid fa-plus"></i></button>
 					</form>
 				</div>
-			    <button className="btn btn-primary cyan" onClick={(e)=>{this.Submit(this.props.create, this.props.title); toast.success(this.product)}}><i className="fa-solid fa-plus"></i></button>
 				</div>
 		  </div>
 		);
 	}
 	Style = () =>{
+		$("body").css("background","#FFF");
 		$(".login").css("width","90%");
 		$(".login > .container").css("width","100%");
+		$(".create").css("display","flex");
+		$(".create").css("flex-flow","row");
 		$(".create").css("height","auto");
 		$(".create").css("width","100%");
 		$(".create > .card-body").css("flex-flow","column");
 		$(".create > .card-body > form").css("padding","50px");
 		$(".create > .card-body > input").css("height","6vh");
-		$(".create").css("background","#BBBBBB");
+		$(".create").css("background","#FFF");
 		$(".create > .btn").css("width","20%");
 		$(".create > .btn").css("position","relative");
 		$(".create > .btn").css("left","40%");

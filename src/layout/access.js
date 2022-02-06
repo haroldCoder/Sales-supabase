@@ -6,6 +6,7 @@ import google from '../img/google.ico'
 import Cookies from 'universal-cookie';
 import {toast,Toaster} from 'react-hot-toast';
 import axios from 'axios';
+import App from '../App';
 
 class Access extends Component{
 	constructor(props) {
@@ -81,7 +82,7 @@ class Access extends Component{
 	render(){
 		return (
 		  <div className="acces container">
-			<span class="material-icons rem">highlight_off</span>
+			<span className="material-icons rem">highlight_off</span>
 		    <form>
 			<div class="mb-3">
 				<label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -100,8 +101,8 @@ class Access extends Component{
 			    disabled={renderProps.disabled}><img src={google}/></button>
 				)}
 				buttonText="Login"
-				onSuccess={this.responseGoogle}
-				onFailure={this.responseGoogle}
+				onSuccess={(e)=>this.responseGoogle(e,this.props.render)}
+				onFailure={(e)=>this.responseGoogle(e,this.props.render)}
 				cookiePolicy={'single_host_origin'}
 			/>
 			<Toaster/>
@@ -110,7 +111,7 @@ class Access extends Component{
 		  </div>
 		);	
 	}
-	responseGoogle = (res) =>{
+	responseGoogle = (res,render) =>{
 		this.cookie.set("name", res.profileObj.name, { path: '/' });
 		this.cookie.set("email", res.profileObj.email, { path: '/' });
 		this.cookie.set("imageurl", res.profileObj.imageUrl, { path: '/' });
@@ -136,6 +137,13 @@ class Access extends Component{
 		}
 		$(".login").remove()
 		$(".log").remove()	
+		ReactDOM.render(
+			<App/>,
+			document.querySelector("#root")
+		);
+		if(render){
+			window.location.reload();
+		}
 	}
 }
 export default Access;

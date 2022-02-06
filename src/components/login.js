@@ -30,7 +30,7 @@ class Login extends Component{
 	render() {
 		return(
 			<div className="plogin d-flex container m-2">
-				<i class="fa-solid fa-circle-xmark"></i>
+				<i class="fa-solid fa-circle-xmark" style={{cursor: "pointer"}}></i>
 				<img src={this.cookie.get("imageurl")}/>
 				<section className="img d-flex justify-content-center">
 					<h1>Profile</h1>

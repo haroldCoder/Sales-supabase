@@ -9,6 +9,7 @@ import { About } from './components/about.js';
 import { Creations } from './components/creations.js';
 import {Toaster} from 'react-hot-toast';
 import Categories from './components/categories.js';
+import CreateP from './layout/createP';
 
 function App() {
   useEffect(()=>{
@@ -32,6 +33,7 @@ function App() {
       <div className="panel">
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path='/create' element={<CreateP/>}/>
           <Route path="/creations" element={<Creations/>}/>
           <Route path="/examples" element={<Example/>}/>
           <Route path="/about" element={<About/>}/>

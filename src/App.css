@@ -67,10 +67,8 @@
   box-shadow: 4px 4px 4px 8px #666;
 }
 .file{
-  width: 70%;
-  height: 50vh;
-  position: relative;
-  left: 30%;
+  width: 50%;
+  height: auto;
   padding: 10px;
 }
 .file > a{
@@ -83,12 +81,10 @@
 .fa-circle-plus:before{
   color: #666;
   font-size: 120px;
-  
 }
 .adds{
   position: relative;
-  left: 0%;
-  top: 25%;
+  left: 10%;
   margin: 10%;
 }
 .mainc{

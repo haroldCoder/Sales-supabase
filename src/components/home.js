@@ -9,6 +9,7 @@ import Create from './products.create';
 import axios from 'axios';
 import Card from '../layout/card.js';
 import Positioning from './positioning';
+import { Link } from 'react-router-dom';
 
 export class Home extends Component{
 	constructor(props) {
@@ -58,7 +59,7 @@ export class Home extends Component{
 			        		))
 			        }
 			        </div>
-					<span className="material-icons add" onClick={this.product}>add_circle</span>
+					<Link to="/create" className="material-icons add">add_circle</Link>
 		         </div>
 			   </>
 		   );		

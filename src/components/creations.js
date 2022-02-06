@@ -6,6 +6,7 @@ import found from '../img/not found.png';
 import axios from 'axios';
 import Card from '../layout/card.js';
 import Access from '../layout/access';
+import { isThisTypeNode } from 'typescript';
 
 export class Creations extends Component{
 	constructor(props){
@@ -21,11 +22,15 @@ export class Creations extends Component{
 	}
 	state = {
 		data: [],
-		fillauthors: []
+		fillauthors: [],
+		inputname: ""
 	};
 	getProductCreate = async() =>{
 		const res = await axios.get('http://localhost:8000/products');
 		this.setState({data: res.data});
+	}
+	onChangeInputName = (e) =>{
+		this.setState({inputname: e.target.value})
 	}
 	render(){
 		this.getProductCreate()
@@ -39,18 +44,32 @@ export class Creations extends Component{
 				);
 			}	
 			else{
-				 return(
-					 <div className="containe">
-						<div className="row d-flex cont">
-							{
-								this.state.data.map(e=>(
-									<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} remove={true} price={e.price}/>			
-								))
-							}
-						</div>	
-					</div>
-				)						
+				if(this.cookies.get("name") == null){
+					return(
+						<Access render={true}/>
+					)						
+				}
+				else{
+					return(
+						<this.creations/>
+					)
+				}	
 			}
+	}
+	creations = () =>{
+		return(
+				<div className="containe">
+					<div className="row d-flex cont">
+						{
+							this.state.data.map(e=>(
+								e.author == this.cookies.get("name") ? 
+								<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} remove={true} price={e.price}/>:
+								null		
+							))
+						}
+					</div>	
+				</div>			
+		)
 	}
 	Style = () =>{
 		if(this.state.data == 0){
@@ -73,5 +92,5 @@ export class Creations extends Component{
 			$(".cont").css("flex-wrap","wrap");
 		}
 		   
-	}
+ 	}
 }
