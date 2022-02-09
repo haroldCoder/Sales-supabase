@@ -57,19 +57,23 @@
   left: 0;
   right: 0;
   width: 100%;
-  height: 100%;
   opacity: 0;
 }
 .files{
+  display: flex;
+  justify-content: center;
+  align-content: center;
   border: 1px solid #000;
   width: 70%;
-  height: 50vh;
+  height: 60vh;
   box-shadow: 4px 4px 4px 8px #666;
 }
 .file{
   width: 50%;
   height: auto;
   padding: 10px;
+  flex-direction: column-reverse !important;
+  justify-content: flex-end;
 }
 .file > a{
   text-align: center;
@@ -84,8 +88,8 @@
 }
 .adds{
   position: relative;
-  left: 10%;
-  margin: 10%;
+  margin: 30% 0;
+  font-size: 190px;
 }
 .mainc{
   width: 100% !important;

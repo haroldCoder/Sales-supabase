@@ -97,9 +97,10 @@ export default class CreateP extends Component{
 			<div className="container">
 			  <div className="card create p-5">
 				<div className="file d-flex" style={{flexFlow: "column"}}>
-					<i className="fa-solid fa-circle-plus adds" id="urlSelect" onClick={this.click}></i>
-					<input type="file" name="img" id="img" onChange={this.load}/>
 					<section className="files">
+						<span class="material-icons adds">add_circle
+						<input type="file" name="img" id="img" onChange={this.load}/>
+						</span>
 					</section>
 				</div>
 				<div className="card-body d-flex m-1">
@@ -197,6 +198,7 @@ export default class CreateP extends Component{
 			  for (var i = 0; i < img1.files.length; i++) {
 				this.uploadFile(img1.files[i]);
 		      }
+			  $(".adds").remove()
 			  $(".files").append(`<img id="imgp" src=""/>`);
 			  $("#imgp").attr("src",URL.createObjectURL(img1.files[0]));
 			  $("#imgp").css("width","100%");

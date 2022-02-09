@@ -6,6 +6,7 @@ import Remove from './remove.js';
 import CreateP from './createP.js';
 import {Toaster, toast} from 'react-hot-toast';
 import IntroModified from '../components/introModifiedP';
+import { Link } from 'react-router-dom';
 
 class Card extends Component{
 	componentDidMount(){
@@ -30,7 +31,7 @@ class Card extends Component{
                	<a href="#" class="btn btn-primary" id="buy">Buy</a>
 				   {
 					 this.props.remove ?
-					 <span class="material-icons edit" onClick={(e)=>this.Edit(e,this.props.title,this.props.description,this.props.imgURI, this.props.price, this.props.author)} style={{cursor: "pointer"}}>edit</span>
+					 <Link to='/edit' class="material-icons edit" onClick={e=>e.stopPropagation()}>edit</Link>
 					 : null
 				   }
                </div>
