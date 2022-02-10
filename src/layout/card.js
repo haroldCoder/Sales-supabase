@@ -31,7 +31,7 @@ class Card extends Component{
                	<a href="#" class="btn btn-primary" id="buy">Buy</a>
 				   {
 					 this.props.remove ?
-					 <Link to='/edit' class="material-icons edit" onClick={e=>e.stopPropagation()}>edit</Link>
+					 <Link to='/edit' class="material-icons edit" onClick={e=>{e.stopPropagation(); localStorage.setItem("title",this.props.title)}}>edit</Link>
 					 : null
 				   }
                </div>

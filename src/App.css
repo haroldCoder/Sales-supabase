@@ -63,10 +63,8 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  border: 1px solid #000;
-  width: 70%;
-  height: 60vh;
-  box-shadow: 4px 4px 4px 8px #666;
+  width: 90%;
+  height: auto;
 }
 .file{
   width: 50%;
@@ -90,6 +88,7 @@
   position: relative;
   margin: 30% 0;
   font-size: 190px;
+  color: #378dfc;
 }
 .mainc{
   width: 100% !important;
@@ -114,6 +113,18 @@
   border-radius: 0px;
   background: #388DFC99;
   box-shadow: 0 0 0 0;
+}
+.category{
+  width: 30% !important;
+  cursor: pointer;
+  color: #378dfc !important;
+}
+.category > option{
+  color: #212529;
+}
+button.cyan{
+  position: relative;
+  left: 40%;
 }
 @media  screen and (max-width: 600px) {
   .cont{

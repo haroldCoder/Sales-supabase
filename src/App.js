@@ -35,7 +35,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path='/create' element={<CreateP create={true}/>}/>
           <Route path="/creations" element={<Creations/>}/>
-          <Route path='/edit' element={<CreateP create={false}/>}/>
+          <Route path='/edit' element={<CreateP create={false} title={localStorage.getItem("title")}/>}/>
           <Route path="/examples" element={<Example/>}/>
           <Route path="/about" element={<About/>}/>
           <Route path="/*/tecnology" element={<Categories cat="tecnology"/>}/>

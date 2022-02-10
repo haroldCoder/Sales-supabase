@@ -51,6 +51,7 @@ export default class CreateP extends Component{
 		this.setState({"category": e.target.value});
 	}
 	Submit = async(create,title,description,imgURI,price) =>{
+		console.log(title);
 		let id;
 		if(this.state.category == ""){
 			this.state.category = $(".category").val();
@@ -95,7 +96,7 @@ export default class CreateP extends Component{
 	render(){
 		return(
 			<div className="container">
-			  <div className="card create p-5">
+			  <div className="card create p-5" style={{boxShadow: "none"}}>
 				<div className="file d-flex" style={{flexFlow: "column"}}>
 					<section className="files">
 						<span class="material-icons adds">add_circle
@@ -103,7 +104,7 @@ export default class CreateP extends Component{
 						</span>
 					</section>
 				</div>
-				<div className="card-body d-flex m-1">
+				<div className="card-body d-flex m-1" style={{padding: "0 !important"}}>
 				<form>
 					<div class="mb-5 mt-2">
 						<label for="exampleInputEmail1" className="form-label text-dark">product title</label>
@@ -119,7 +120,7 @@ export default class CreateP extends Component{
 					</div>
 					<div className="mb-3">
 						<label className="form-label">select the category of your product</label>
-						<select name="category" className='m-4 category' onChange={this.onChangeCategory} value={this.state.category}>
+						<select name="category" className='m-2 category form-select' aria-label='Default select category' onChange={this.onChangeCategory} value={this.state.category}>
 						    <option value="Foot">Foot</option>
 							<option value="Tecnology">Tecnology</option>
 							<option value="Clothes">Clothes</option>
@@ -148,7 +149,7 @@ export default class CreateP extends Component{
 		$(".create").css("height","auto");
 		$(".create").css("width","100%");
 		$(".create > .card-body").css("flex-flow","column");
-		$(".create > .card-body > form").css("padding","50px");
+		$(".create > .card-body > form").css("padding","0px");
 		$(".create > .card-body > input").css("height","6vh");
 		$(".create").css("background","#FFF");
 		$(".create > .btn").css("width","20%");
