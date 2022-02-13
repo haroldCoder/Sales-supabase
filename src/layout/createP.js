@@ -98,10 +98,18 @@ export default class CreateP extends Component{
 			<div className="container">
 			  <div className="card create p-5" style={{boxShadow: "none"}}>
 				<div className="file d-flex" style={{flexFlow: "column"}}>
-					<section className="files">
-						<span class="material-icons adds">add_circle
-						<input type="file" name="img" id="img" onChange={this.load}/>
-						</span>
+					<section className="files" style={{flexFlow: "column"}}>
+						<input type="file" name="choose_file" id="choose_file" className='inputfile' onChange={(e)=>this.load(".files",e)}/>
+						<label for="choose_file"><span class="material-icons adds">add_circle</span></label>
+						<section>
+							<h5 className='card-text mb-4 text-dark'>more images this product</h5>
+							<div className="card bg-dark mt-2 d-flex" style={{flexFlow: "row"}}>
+							   <button className='card space1' style={{width: "25%", borderRadius: 0, cursor: "pointer"}}><input type="file" name="choose_file" id="choose_file2" className='inputfile' onChange={(e)=>this.load(".space1",e)}/><label className='text-dark w-100' style={{textAlign: "center"}} for="choose_file2">+</label></button>
+							   <button className='card' style={{width: "25%", borderRadius: 0, cursor: "pointer"}}><h2 className='text-dark w-100' style={{textAlign: "center"}}>+</h2></button>
+							   <button className='card' style={{width: "25%", borderRadius: 0, cursor: "pointer"}}><h2 className='text-dark w-100' style={{textAlign: "center"}}>+</h2></button>
+							   <button className='card' style={{width: "25%", borderRadius: 0, cursor: "pointer"}}><h2 className='text-dark w-100' style={{textAlign: "center"}}>+</h2></button>
+						    </div>
+						</section>
 					</section>
 				</div>
 				<div className="card-body d-flex m-1" style={{padding: "0 !important"}}>
@@ -194,14 +202,15 @@ export default class CreateP extends Component{
 			fd.append('file', file);
 			xhr.send(fd);
 		}
-		  load = () => {
-			  let img1 = document.getElementById('img');
+		  load = (container,imp) => {
+			  let img1 = document.getElementById(imp.target.id);
 			  for (var i = 0; i < img1.files.length; i++) {
 				this.uploadFile(img1.files[i]);
 		      }
-			  $(".adds").remove()
-			  $(".files").append(`<img id="imgp" src=""/>`);
-			  $("#imgp").attr("src",URL.createObjectURL(img1.files[0]));
+			  ReactDOM.render(
+				  <img src={URL.createObjectURL(img1.files[0])} style={{width: "100%"}}/>,
+				  document.querySelector(container)
+			  );
 			  $("#imgp").css("width","100%");
 			  $("#imgp").css("height","100%");
 		}

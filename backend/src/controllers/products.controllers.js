@@ -6,27 +6,29 @@ notesctrl.getproducts = async(req,res)=>{
     res.json(product);	
 } 
 notesctrl.createproducts = async(req,res)=>{
-	const {name, description, imgURI, author, price, category} = req.body;
+	const {name, description, imgURI, author, price, category, arrayImg} = req.body;
 	const product = new products({
               name: name,
 		      description: description,
               imgURI: imgURI,
 			  author: author,
 			  price: price,
-			  category: category
+			  category: category,
+			  arrayImg: arrayImg 
 	});
 	await product.save();
 	res.json("note create");
 }
 notesctrl.updateproducts = async(req,res)=>{
-	const {name, description, imgURI, author, price, category} = req.body;
+	const {name, description, imgURI, author, price, category, arrayImg} = req.body;
 	await products.findByIdAndUpdate(req.params.id,{
 		name: name,
 		description: description,
 		imgURI: imgURI,
 		author: author,
 		price: price,
-		category: category
+		category: category,
+		arrayImg: arrayImg
 	})
 	res.json({"id": req.params.id});
 };

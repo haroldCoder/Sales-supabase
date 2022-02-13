@@ -56,8 +56,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100%;
+  width: auto;
   opacity: 0;
+  cursor: pointer;
 }
 .files{
   display: flex;
@@ -65,6 +66,13 @@
   align-content: center;
   width: 90%;
   height: auto;
+}
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 .file{
   width: 50%;
@@ -86,9 +94,10 @@
 }
 .adds{
   position: relative;
-  margin: 30% 0;
+  margin: 24% 0;
   font-size: 190px;
   color: #378dfc;
+  left: 29%;
 }
 .mainc{
   width: 100% !important;
