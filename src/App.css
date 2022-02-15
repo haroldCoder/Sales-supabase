@@ -67,6 +67,13 @@
   width: 90%;
   height: auto;
 }
+.maincr{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 90%;
+  height: auto;
+}
 .inputfile {
   width: 0.1px;
   height: 0.1px;

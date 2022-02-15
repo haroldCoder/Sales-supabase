@@ -57,36 +57,38 @@ export default class CreateP extends Component{
 			this.state.category = $(".category").val();
 		}
 		if(create == true)
-			 if(this.state.name != "" && this.state.description != ""){
-		      await axios.post('http://localhost:8000/products',{
-			   name: this.state.name,
-			   description: this.state.description,
-			   imgURI: localStorage.getItem("uri"),
-			   author: this.cookies.get("name"),
-			   price: parseFloat(this.state.price).toFixed(2),
-			   category: this.state.category
-		      });
-			  this.product = "Product Created";
-			}
-			  else
-		        alert("Fill in all the fields");
-		
-		else{
-			   id = this.state.data.filter(e=>{
-				   if(e.name == title)
-				    return e;
-			   })
-			   await axios.put('http://localhost:8000/products/'+id[0]._id,{
+			if(this.state.name != "" && this.state.description != ""){
+				await axios.post('http://localhost:8000/products',{
 				name: this.state.name,
 				description: this.state.description,
-				imgURI: localStorage.getItem("uri"),
+				imgURI: localStorage.getItem("urichoose_file"),
+				author: this.cookies.get("name"),
+				price: parseFloat(this.state.price).toFixed(2),
+				category: this.state.category,
+				arrayImg: [localStorage.getItem("urichoose_file2"),localStorage.getItem("urichoose_file3"),localStorage.getItem("urichoose_file4")]
+				});
+				this.product = "Product Created";
+			}
+			else
+				alert("Fill in all the fields");
+		
+		else{
+				id = this.state.data.filter(e=>{
+					if(e.name == title)
+					return e;
+				})
+				await axios.put('http://localhost:8000/products/'+id[0]._id,{
+				name: this.state.name,
+				description: this.state.description,
+				imgURI: localStorage.getItem("urichoose_file"),
 				author: this.cookies.get("name"),
 				price: parseFloat(this.state.price).toFixed(2), 
-				category: this.state.category
-			   })
-			   this.product = "Modified Product";
+				category: this.state.category,
+				arrayImg: [localStorage.getItem("urichoose_file2"),localStorage.getItem("urichoose_file3"),localStorage.getItem("urichoose_file4")]
+				})
+				this.product = "Modified Product";
 		}
-		  this.setState({"name": ''});
+				this.setState({"name": ''});
 		  this.setState({"description": ''});
 		  $("#imgs").remove();
 		  this.setState({"price": ''});
@@ -99,15 +101,16 @@ export default class CreateP extends Component{
 			  <div className="card create p-5" style={{boxShadow: "none"}}>
 				<div className="file d-flex" style={{flexFlow: "column"}}>
 					<section className="files" style={{flexFlow: "column"}}>
-						<input type="file" name="choose_file" id="choose_file" className='inputfile' onChange={(e)=>this.load(".files",e)}/>
+						<section className="maincr">
+							<input type="file" name="choose_file" id="choose_file" className='inputfile' onChange={(e)=>this.load(".maincr",e)}/>
+						</section>
 						<label for="choose_file"><span class="material-icons adds">add_circle</span></label>
 						<section>
 							<h5 className='card-text mb-4 text-dark'>more images this product</h5>
-							<div className="card bg-dark mt-2 d-flex" style={{flexFlow: "row"}}>
-							   <button className='card space1' style={{width: "25%", borderRadius: 0, cursor: "pointer"}}><input type="file" name="choose_file" id="choose_file2" className='inputfile' onChange={(e)=>this.load(".space1",e)}/><label className='text-dark w-100' style={{textAlign: "center"}} for="choose_file2">+</label></button>
-							   <button className='card' style={{width: "25%", borderRadius: 0, cursor: "pointer"}}><h2 className='text-dark w-100' style={{textAlign: "center"}}>+</h2></button>
-							   <button className='card' style={{width: "25%", borderRadius: 0, cursor: "pointer"}}><h2 className='text-dark w-100' style={{textAlign: "center"}}>+</h2></button>
-							   <button className='card' style={{width: "25%", borderRadius: 0, cursor: "pointer"}}><h2 className='text-dark w-100' style={{textAlign: "center"}}>+</h2></button>
+							<div className="card bg-dark mt-2 d-flex w-100" style={{flexFlow: "row", height: "16vh"}}>
+							   <button className='card space1' style={{width: "33.5%", borderRadius: 0, cursor: "pointer"}}><input type="file" name="choose_file" id="choose_file2" className='inputfile' onChange={(e)=>this.load(".space1",e)}/><label className='text-dark w-100 h1 h-100' style={{textAlign: "center", margin: "20% 0"}} for="choose_file2">+</label></button>
+							   <button className='card space2' style={{width: "33.5%", borderRadius: 0, cursor: "pointer"}}><input type="file" name="choose_file" id="choose_file3" className='inputfile' onChange={(e)=>this.load(".space2",e)}/><label className='text-dark w-100 h1 h-100' style={{textAlign: "center", margin: "20% 0"}} for="choose_file3">+</label></button>
+							   <button className='card space3' style={{width: "33.5%", borderRadius: 0, cursor: "pointer"}}><input type="file" name="choose_file" id="choose_file4" className='inputfile' onChange={(e)=>this.load(".space3",e)}/><label className='text-dark w-100 h1 h-100' style={{textAlign: "center", margin: "20% 0"}} for="choose_file4">+</label></button>
 						    </div>
 						</section>
 					</section>
@@ -186,7 +189,7 @@ export default class CreateP extends Component{
 		    this.uploadFile('https://res.cloudinary.com/demo/image/upload/sample.jpg')
 		    e.preventDefault();
 		 }
-		 uploadFile = (file) =>{
+		 uploadFile = (file,sub) =>{
 			var url = `https://api.cloudinary.com/v1_1/${this.cloudName}/upload`;
 			var xhr = new XMLHttpRequest();
 			var fd = new FormData();
@@ -195,7 +198,8 @@ export default class CreateP extends Component{
 			xhr.onreadystatechange = function(e){
 				 var response = JSON.parse(xhr.responseText)
 			     global.url1 = response.secure_url;
-			     localStorage.setItem("uri",global.url1);
+				 console.log(sub);
+			     localStorage.setItem(`uri${sub}`,global.url1);
 			}
 			fd.append('upload_preset', this.unsignedUploadPreset);
 			fd.append('tags', 'browser_upload'); // Optional - add tag for image admin in Cloudinary
@@ -204,11 +208,19 @@ export default class CreateP extends Component{
 		}
 		  load = (container,imp) => {
 			  let img1 = document.getElementById(imp.target.id);
+			  console.log(img1.getAttribute("id"))
 			  for (var i = 0; i < img1.files.length; i++) {
-				this.uploadFile(img1.files[i]);
+				  if(img1.getAttribute("id") == "choose_file")
+				     this.uploadFile(img1.files[i],"choose_file");
+				  else if(img1.getAttribute("id") == "choose_file2")
+				      this.uploadFile(img1.files[i],"choose_file2");
+				  else if(img1.getAttribute("id") == "choose_file3")
+				      this.uploadFile(img1.files[i],"choose_file3");
+				  else if(img1.getAttribute("id") == "choose_file4")
+				      this.uploadFile(img1.files[i],"choose_file4");
 		      }
 			  ReactDOM.render(
-				  <img src={URL.createObjectURL(img1.files[0])} style={{width: "100%"}}/>,
+				  <img src={URL.createObjectURL(img1.files[0])} style={{width: "100%", height: "100%"}}/>,
 				  document.querySelector(container)
 			  );
 			  $("#imgp").css("width","100%");
