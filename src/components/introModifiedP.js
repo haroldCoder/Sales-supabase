@@ -18,21 +18,21 @@ export default class IntroModified extends Component {
 						<p class="card-text text-secondary">With supporting text below as a natural lead-in to additional content.</p>
 						<div className='d-flex mt-5 justify-content-center'>
 							<button class="btn btn-primary" onClick={()=>this.EditAdvance(this.props.title,this.props.price,this.props.author)}>Advance modification</button>
-							<button class="btn btn-primary" onClick={(e)=>this.EditCard(e,this.props.title)}>modify card</button>
+							<button class="btn btn-primary" onClick={(e)=>this.EditCard(e,this.props.title,this.props.arrayimg)}>modify card</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		);
 	}
-	EditCard = (e,title) =>{
+	EditCard = (e,title,arrayimg) =>{
 		$(".modified").remove();
 		$("#root").append(`<div class="login"></div>`);
 		$(".login").css("position","absolute");
 		$(".login").css("top","10%");
 		$(".login").css("left","8%");
 		ReactDOM.render(
-			<CreateP create={false} title={title}/>,
+			<CreateP create={false} title={title} arrayimg={arrayimg}/>,
 			document.querySelector(".login")
 		);
 		e.stopPropagation();

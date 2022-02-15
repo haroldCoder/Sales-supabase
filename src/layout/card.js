@@ -14,7 +14,7 @@ class Card extends Component{
 	}
 	render(){
 		return(
-			<div class="card bg-white" onClick={(e)=>this.cardMain(e,this.props.title,this.props.author,this.props.imgURI,this.props.description,this.props.price)}>
+			<div class="card bg-white" onClick={(e)=>this.cardMain(e,this.props.title,this.props.author,this.props.imgURI,this.props.description,this.props.price,this.props.arrayimg)}>
                <div className="title">
                 <h5 class="card-header">{this.props.title}<h5 className="mt-1 text-primary">{this.props.author}</h5></h5>
                </div>
@@ -31,7 +31,7 @@ class Card extends Component{
                	<a href="#" class="btn btn-primary" id="buy">Buy</a>
 				   {
 					 this.props.remove ?
-					 <Link to='/edit' class="material-icons edit" onClick={e=>{e.stopPropagation(); localStorage.setItem("title",this.props.title)}}>edit</Link>
+					 <button to='/edit' class="material-icons edit" onClick={e=>{this.Edit(e,this.props.title,this.props.description,this.props.imgURI,this.props.price,this.props.author,this.props.arrayimg)}}>edit</button>
 					 : null
 				   }
                </div>
@@ -49,19 +49,19 @@ class Card extends Component{
 	   $(".premove").css("top","23%");
 	   $(".premove").css("left","40%"); 
 	}
-	Edit = (e, title, description, imgURI, price, author) =>{
+	Edit = (e, title, description, imgURI, price, author, arrayimg) =>{
 		$(".panel").append(`<div class="modified"></div>`); 
 		ReactDOM.render(
-			<IntroModified title={title} description={description} imgURI={imgURI} price={price} author={author}/>,
+			<IntroModified title={title} description={description} imgURI={imgURI} price={price} author={author} arrayimg={arrayimg}/>,
 			 document.querySelector(".modified")
 		)
 		e.stopPropagation();
 	}
-	cardMain = (e,title,author,cover,description,price) =>{
+	cardMain = (e,title,author,cover,description,price,array) =>{
 		e.stopPropagation();
 		$(".panel").append(`<div class="pmainc"></div>`);
 		ReactDOM.render(
-			<MainCard title={title} cover={cover} description={description} author={author} price={price}/>,
+			<MainCard title={title} cover={cover} description={description} author={author} price={price} arrayimg={array}/>,
 			document.querySelector(".pmainc")
 		);
 	}

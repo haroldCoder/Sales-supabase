@@ -63,7 +63,7 @@ export class Creations extends Component{
 						{
 							this.state.data.map(e=>(
 								e.author == this.cookies.get("name") ? 
-								<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} remove={true} price={e.price}/>:
+								<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} remove={true} price={e.price} arrayimg={e.arrayImg}/>:
 								null		
 							))
 						}

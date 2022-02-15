@@ -29,6 +29,7 @@ class MainCard extends Component{
 		this.setState({datap: res.data});
 	}
 	render(){
+		console.log(this.props.arrayimg);
 		return(
 			<div className="container window">
 				<div class="card mainc" style={{width: "18rem"}}>
@@ -48,6 +49,21 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 						    <h5 class="card-title">{this.props.title}</h5>
 							<h5 className="text-primary">{this.props.author}</h5>
 						</div>
+						{
+							this.props.arrayimg != 0 ?
+							<div className='moreimg d-flex' style={{width: "32%",height: "9vh",cursor: "pointer"}}>
+								<div className="card" style={{width: "48%", height: "100%"}}>
+									<a href={this.props.arrayimg[0]} target="_blank" style={{width: "100%", height: "100%"}}><img src={this.props.arrayimg[0]} style={{width: "100%", height: "100%"}}/></a>
+									</div>
+								<div className="card" style={{width: "48%", height: "100%"}}>
+									<a href={this.props.arrayimg[1]} target="_blank" style={{width: "100%", height: "100%"}}><img src={this.props.arrayimg[1]} style={{width: "100%", height: "100%"}}/></a>
+									</div>
+								<div className="card" style={{width: "48%", height: "100%"}}>
+									<a href={this.props.arrayimg[2]} target="_blank" style={{width: "100%", height: "100%"}}><img src={this.props.arrayimg[2]} style={{width: "100%", height: "100%"}} /></a>
+								</div>
+							</div>	
+							: null						
+						}
 						<p class="card-text text-cm">{this.props.description}</p>
 						<a href="#" class="btn btn-dark buy" onClick={()=>this.PayMent(this.props.price,this.props.author, this.props.title)}>Buy</a>
 					</div>

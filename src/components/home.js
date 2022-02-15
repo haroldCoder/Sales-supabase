@@ -55,7 +55,7 @@ export class Home extends Component{
 			        <div className="row d-flex cont">
 					{
 			        		this.state.data.map(e=>(
-			        			<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} price={e.price}/>
+			        			<Card title={e.name} description={e.description} imgURI={e.imgURI} author={e.author} price={e.price} arrayimg={e.arrayImg}/>
 			        		))
 			        }
 			        </div>
