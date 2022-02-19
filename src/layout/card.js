@@ -50,7 +50,7 @@ class Card extends Component{
 	   $(".premove").css("left","40%"); 
 	}
 	Edit = (e, title, description, imgURI, price, author, arrayimg) =>{
-		$(".panel").append(`<div class="modified"></div>`); 
+		$(".panel").append(`<div class="modified"></div> <Toaster position="top-center" reverseOrder={false}/>`); 
 		ReactDOM.render(
 			<IntroModified title={title} description={description} imgURI={imgURI} price={price} author={author} arrayimg={arrayimg}/>,
 			 document.querySelector(".modified")

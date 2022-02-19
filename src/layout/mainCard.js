@@ -28,13 +28,12 @@ class MainCard extends Component{
 		const res = await axios.get('http://localhost:8000/products');
 		this.setState({datap: res.data});
 	}
-	render(){
-		console.log(this.props.arrayimg);
+	render(){ 
 		return(
 			<div className="container window">
 				<div class="card mainc" style={{width: "18rem"}}>
 						<span class="material-icons close">cancel</span>
-						<a id="covers" href={this.props.cover} target="_blank" style={{cursor: "grabbing"}}><img src={this.props.cover} class="card-img-top" alt={this.props.title}/></a>
+						<a id="covers" href={this.props.cover} target="_blank" style={{cursor: "pointer"}}><img src={this.props.cover} class="card-img-top" alt={this.props.title}/></a>
 					<div class="card price" style={{width: "26%"}}>
 						<div className="title bg-secondary">
 							<h2 className='card-title text-center'>Price</h2>
@@ -48,22 +47,22 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 						<div className="m-2 titlem">
 						    <h5 class="card-title">{this.props.title}</h5>
 							<h5 className="text-primary">{this.props.author}</h5>
-						</div>
-						{
-							this.props.arrayimg != 0 ?
-							<div className='moreimg d-flex' style={{width: "32%",height: "9vh",cursor: "pointer"}}>
-								<div className="card" style={{width: "48%", height: "100%"}}>
-									<a href={this.props.arrayimg[0]} target="_blank" style={{width: "100%", height: "100%"}}><img src={this.props.arrayimg[0]} style={{width: "100%", height: "100%"}}/></a>
+							{
+								this.props.arrayimg != 0 ?
+								<div className='moreimg d-flex card mt-4' style={{width: "100%",height: "11vh",cursor: "pointer", flexFlow: "row", borderTopRightRadius: "0", borderBottomRightRadius: "0"}}>
+									<div className="card" style={{width: "48%", height: "100%", borderRight: "7px solid #111", borderTopRightRadius: "0", borderBottomRightRadius: "0"}}>
+										<a href={this.props.arrayimg[0]} target="_blank" style={{width: "100%", height: "100%" }}><img src={this.props.arrayimg[0]} style={{width: "100%", height: "100%"}}/></a>
+										</div>
+									<div className="card" style={{width: "48%", height: "100%", borderRight: "7px solid #111", borderTopRightRadius: "0", borderBottomRightRadius: "0"}}>
+										<a href={this.props.arrayimg[1]} target="_blank" style={{width: "100%", height: "100%"}}><img src={this.props.arrayimg[1]} style={{width: "100%", height: "100%"}}/></a>
+										</div>
+									<div className="card" style={{width: "48%", height: "100%", borderRight: "7px solid #111", borderTopRightRadius: "0", borderBottomRightRadius: "0"}}>
+										<a href={this.props.arrayimg[2]} target="_blank" style={{width: "100%", height: "100%"}}><img src={this.props.arrayimg[2]} style={{width: "100%", height: "100%"}} /></a>
 									</div>
-								<div className="card" style={{width: "48%", height: "100%"}}>
-									<a href={this.props.arrayimg[1]} target="_blank" style={{width: "100%", height: "100%"}}><img src={this.props.arrayimg[1]} style={{width: "100%", height: "100%"}}/></a>
-									</div>
-								<div className="card" style={{width: "48%", height: "100%"}}>
-									<a href={this.props.arrayimg[2]} target="_blank" style={{width: "100%", height: "100%"}}><img src={this.props.arrayimg[2]} style={{width: "100%", height: "100%"}} /></a>
 								</div>
-							</div>	
-							: null						
-						}
+								: null						
+						    }
+						</div>
 						<p class="card-text text-cm">{this.props.description}</p>
 						<a href="#" class="btn btn-dark buy" onClick={()=>this.PayMent(this.props.price,this.props.author, this.props.title)}>Buy</a>
 					</div>
@@ -96,7 +95,6 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 					return e;
 				}
 			})
-			console.log(idpro[0]._id);
 			$(".panel").append(`<div class="panelpay"></div>`);
 			ReactDOM.render(
 				<Pay price={price} idpay={idpay[0].idpay} idproduct={idpro[0]._id} />,
@@ -116,13 +114,14 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 	}
 	Style = () =>{
 		$(".window").css("position","absolute");
-		$(".window").css("left","10%");
+		$(".window").css("left","6%");
 		$(".window").css("top","8.5%");
-		$(".window").css("width","80%");
-		$(".window").css("height","100vh");
+		$(".window").css("width","90%");
+		$(".window").css("height","auto");
 		$(".window").css("padding","1%");
 		$(".window > .card").css("background","#000000eb");
 		$(".window > .card").css("backdrop-filter","blur(6px)");
+		$(".window > .card").css("padding","1em 0 3em")
 		$("#covers").css("width","36%");
 		$("#covers").css("position","relative");
 		$("#covers").css("left","30%");
@@ -137,15 +136,20 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 		$(".close").on("click",()=>{
 			$(".pmainc").remove();
 		})
-		$(".buy").css("position","absolute");
+		$(".buy").css("position","relative");
 		$(".buy").css("left","39%");
 		$(".buy").css("top","87%");
 		$(".buy").css("width","20%");
+		$(".buy").css("margin", "5% 0 0");
 		$(".titlem").css("position","absolute");
 		$(".titlem").css("top","3%");
+		$(".titlem").css("height", "29%");
+		$(".titlem").css("width","27%");
 		$(".price").css("position","absolute");
 		$(".price").css("left","73%");
 		$(".price").css("top","16%");
+		$(".moreimg").css("position","sticky");
+		$(".moreimg").css("top", "90%")
 	}
 }
 export default MainCard;

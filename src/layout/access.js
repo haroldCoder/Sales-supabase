@@ -7,6 +7,7 @@ import Cookies from 'universal-cookie';
 import {toast,Toaster} from 'react-hot-toast';
 import axios from 'axios';
 import App from '../App';
+import EditAdvance from '../components/editAdvance';
 
 class Access extends Component{
 	constructor(props) {
@@ -144,6 +145,9 @@ class Access extends Component{
 		if(render){
 			window.location.reload();
 		}
+		ReactDOM.render(
+
+		)
 	}
 }
 export default Access;

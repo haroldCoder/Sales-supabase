@@ -33,7 +33,7 @@ function App() {
       <div className="panel">
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path='/create' element={<CreateP create={true}/>}/>
+          <Route path='/create' element={<><CreateP create={true}/> <Toaster position="top-center" reverseOrder={false}/></>}/>
           <Route path="/creations" element={<Creations/>}/>
           <Route path='/edit' element={<CreateP create={false} title={localStorage.getItem("title")}/>}/>
           <Route path="/examples" element={<Example/>}/>
@@ -49,8 +49,7 @@ function App() {
           <Route path="/*/children" element={<Categories cat="children"/>}/>
           <Route path="/*/constructor" element={<Categories cat="contructor"/>}/>
         </Routes>
-        <Toaster position="top-center" reverseOrder={false}/>
-      </div>
+      </div>  
     </div>
     </BrowserRouter>
   );

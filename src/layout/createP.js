@@ -7,6 +7,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { toast, Toaster } from 'react-hot-toast';
 import { publicEncrypt } from 'crypto';
+import Access from './access.js';
 
 export default class CreateP extends Component{
 	constructor(props){
@@ -88,14 +89,15 @@ export default class CreateP extends Component{
 				})
 				this.product = "Modified Product";
 		}
-				this.setState({"name": ''});
+		  this.setState({"name": ''});
 		  this.setState({"description": ''});
 		  $("#imgs").remove();
 		  this.setState({"price": ''});
 		  alert($(".category").val())
+		  localStorage.clear()
 	}
 
-	render(){
+	PanelCreateProduct = () =>{
 		return(
 			<div className="container">
 			  <div className="card create p-5" style={{boxShadow: "none"}}>
@@ -148,8 +150,22 @@ export default class CreateP extends Component{
 					</form>
 				</div>
 				</div>
+				<Toaster position="top-center" reverseOrder={false}/>
 		  </div>
 		);
+	}
+	render(){
+		if(this.cookies.get("name") == null && this.cookies.get("email") == null){
+			$(".login").css("margin","0 1% 0 20%");
+			return(
+				<h2>hello</h2>
+			);			
+		}
+		else{
+			return(
+				<this.PanelCreateProduct/>
+			)
+		}
 	}
 	Style = () =>{
 		$("body").css("background","#FFF");
@@ -169,6 +185,7 @@ export default class CreateP extends Component{
 		$(".login").one("dblclick",(e)=>{
 			$(".login").remove()
 		})
+		$(".login").css("width", "60%");
 	}
 
 	download(filename, text) { 

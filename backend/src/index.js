@@ -11,8 +11,11 @@ const url = 'mongodb+srv://manuel:12345@702.s3tgn.mongodb.net/myFirstDatabase?re
 const port =  8000;
 app.use(bodyParser.json())
 const Stripe = require('stripe');
+const products = require('./models/products.js');
 const uri = "mongodb+srv://koder:koder@sales.wkapo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-app.use('/products',require('./routes/products.js'));
+const connection = mongoose.connection;
+app.use('/products', require('./routes/products.js'));
+app.use('/users', require('./routes/users.js'));
 require('dotenv').config();
 
 mongoose.connect(uri,{
@@ -20,7 +23,7 @@ mongoose.connect(uri,{
 	useUnifiedTopology: true,
 });
 
-const connection = mongoose.connection;
+
 
 connection.once('open',()=>{
     console.log('db is connected');
