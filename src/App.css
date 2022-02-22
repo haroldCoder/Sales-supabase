@@ -142,6 +142,9 @@ button.cyan{
   position: relative;
   left: 40%;
 }
+.btn-primary:hover{
+  background-color: #008cff !important;
+}
 @media  screen and (max-width: 600px) {
   .cont{
     flex-flow: column;

@@ -5,7 +5,6 @@ import MainCard from '../layout/mainCard.js';
 import Remove from './remove.js';
 import CreateP from './createP.js';
 import {Toaster, toast} from 'react-hot-toast';
-import IntroModified from '../components/introModifiedP';
 import { Link } from 'react-router-dom';
 
 class Card extends Component{
@@ -49,10 +48,14 @@ class Card extends Component{
 	   $(".premove").css("top","23%");
 	   $(".premove").css("left","40%"); 
 	}
-	Edit = (e, title, description, imgURI, price, author, arrayimg) =>{
+	Edit = (e, title, arrayimg) =>{
 		$(".panel").append(`<div class="modified"></div> <Toaster position="top-center" reverseOrder={false}/>`); 
+		$(".modified").css("position","absolute");
+		$(".modified").css("top","10%");
+		$(".modified").css("left","8%");
+		$(".modified").css("width","85%")
 		ReactDOM.render(
-			<IntroModified title={title} description={description} imgURI={imgURI} price={price} author={author} arrayimg={arrayimg}/>,
+			<CreateP create={false} title={title} arrayimg={arrayimg}/>,
 			 document.querySelector(".modified")
 		)
 		e.stopPropagation();

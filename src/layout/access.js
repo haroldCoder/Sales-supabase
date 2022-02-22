@@ -113,9 +113,6 @@ class Access extends Component{
 		);	
 	}
 	responseGoogle = (res,render) =>{
-		this.cookie.set("name", res.profileObj.name, { path: '/' });
-		this.cookie.set("email", res.profileObj.email, { path: '/' });
-		this.cookie.set("imageurl", res.profileObj.imageUrl, { path: '/' });
 		let pos, i = 0;
 		let b = 'F';
 
@@ -128,26 +125,28 @@ class Access extends Component{
 		}
 		if(b == 'V'){
 			alert("logged in");
+			this.cookie.set("name", res.profileObj.name, { path: '/' });
+			this.cookie.set("email", res.profileObj.email, { path: '/' });
+			this.cookie.set("imageurl", res.profileObj.imageUrl, { path: '/' });
 		}
 		else{
-			axios.post('http://localhost:8000/users',{
-				"name": this.cookie.get("name"),
-				"email": this.cookie.get("email"),
-				"imageurl": this.cookie.get("imageurl")
-	        });
+			if(render){
+				ReactDOM.render(
+					<EditAdvance name={res.profileObj.name} email={res.profileObj.email} imageUrl={res.profileObj.imageUrl} render={render}/>,
+				document.querySelector(".acces")
+			);
+			}
+			else{
+				ReactDOM.render(
+					<EditAdvance name={res.profileObj.name} email={res.profileObj.email} imagUrl={res.profileObj.imageUrl} render={render}/>,
+				document.querySelector(".acces")
+			);	
+			}
 		}
-		$(".login").remove()
-		$(".log").remove()	
-		ReactDOM.render(
-			<App/>,
-			document.querySelector("#root")
-		);
-		if(render){
-			window.location.reload();
-		}
-		ReactDOM.render(
-
-		)
+		
+	    $(".acces").css("width","auto")
+		$(".acces").css("height","auto")
+		$(".acces").css("background","none")		
 	}
 }
 export default Access;

@@ -150,7 +150,6 @@ export default class CreateP extends Component{
 					</form>
 				</div>
 				</div>
-				<Toaster position="top-center" reverseOrder={false}/>
 		  </div>
 		);
 	}
@@ -182,8 +181,8 @@ export default class CreateP extends Component{
 		$(".create > .btn").css("width","20%");
 		$(".create > .btn").css("position","relative");
 		$(".create > .btn").css("left","40%");
-		$(".login").one("dblclick",(e)=>{
-			$(".login").remove()
+		$(".modified").one("dblclick",(e)=>{
+			$(".modified").remove()
 		})
 		$(".login").css("width", "60%");
 	}

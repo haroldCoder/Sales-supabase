@@ -3,7 +3,7 @@ const {Schema,model} = require('mongoose');
 const users = new Schema({
     name: {type: String, required: true},
     email: {type: String, required: true},
-    Number: {type: String, required: false},
+    number: {type: String, required: false},
     imageurl: {type: String, required: true},
     idpay: {type: String, required: false}
 });

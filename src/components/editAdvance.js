@@ -33,6 +33,7 @@ export default class EditAdvance extends Component {
 	}
 	onChangeNumber = (e) =>{
 		this.setState({number: e.target.value});
+		console.log(this.state.number);
 	}
 	onChangeID = (e) =>{
 		this.setState({ID: e.target.value});
@@ -59,7 +60,7 @@ export default class EditAdvance extends Component {
 					</div>
 					<textarea className="form-control mt-2" id="w3review" name="w3review" rows="4" cols="50">Write more information valuable</textarea>
 				<footer className="foot d-flex justify-content-center">
-					<button class="btn btn-primary" onClick={this.submitInfo}>Accept</button>
+					<button class="btn btn-primary" onClick={()=>this.submitInfo(this.props.name,this.props.email,this.props.imageUrl,this.props.render)}>Accept</button>
 				</footer>
 				</form>
 				</div>
@@ -67,19 +68,48 @@ export default class EditAdvance extends Component {
 			</div>
 		);
 	}
-	submitInfo = () =>{
+	submitInfo = (name,email,imageUrl,render) =>{
+		let pos, i = 0;
+		let b = 'F';
+		console.log(this.state.number);
 		this.id = this.state.data.filter(e=>{
-			   if(e.name == this.name) 
-			      return e;
-		});
+			if(e.name == name) 
+			   return e;
+	 });
+
+		while(i < this.state.data.length){
+			if(this.state.data[i].name == name){
+				pos = i;
+				b = 'V';
+			}
+			i++;
+		}
+		if(b == 'V'){
+			alert("logged in");
 			axios.put('http://localhost:8000/users/'+this.id[0]._id,{
-			   name: this.name,
-			   email: this.id[0].email,
 			   number: this.state.number,
 			   idpay: this.state.ID
 		    });
-			this.cookie.set('idpay', this.state.ID);
-		$(".panelEA").remove();
+		}
+		else{
+			axios.post('http://localhost:8000/users',{
+				"name": name,
+				"email": email,
+				"imageurl": imageUrl,
+				"number": this.state.number,
+				"idpay": this.state.ID
+	        });
+			
+		}
+		this.cookie.set('idpay', this.state.ID);
+		this.cookie.set("name", name, { path: '/' });
+		this.cookie.set("email", email, { path: '/' });
+		this.cookie.set("imageurl", imageUrl, { path: '/' });
+		$(".acces").remove();
+		console.log(render);
+		if(render){
+			window.location.reload();
+		}
 	}
 	Style = () =>{
 		$(".modified").remove()
