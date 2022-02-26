@@ -82,7 +82,7 @@ class Access extends Component{
 	}
 	render(){
 		return (
-		  <div className="acces container">
+		  <div className="acces container" style={{width: "100%"}}>
 			<span className="material-icons rem">highlight_off</span>
 		    <form>
 			<div class="mb-3">
@@ -123,30 +123,18 @@ class Access extends Component{
 			}
 			i++;
 		}
-		if(b == 'V'){
+		if(2 == 1){
 			alert("logged in");
 			this.cookie.set("name", res.profileObj.name, { path: '/' });
 			this.cookie.set("email", res.profileObj.email, { path: '/' });
 			this.cookie.set("imageurl", res.profileObj.imageUrl, { path: '/' });
 		}
 		else{
-			if(render){
-				ReactDOM.render(
+			ReactDOM.render(
 					<EditAdvance name={res.profileObj.name} email={res.profileObj.email} imageUrl={res.profileObj.imageUrl} render={render}/>,
 				document.querySelector(".acces")
 			);
-			}
-			else{
-				ReactDOM.render(
-					<EditAdvance name={res.profileObj.name} email={res.profileObj.email} imagUrl={res.profileObj.imageUrl} render={render}/>,
-				document.querySelector(".acces")
-			);	
-			}
-		}
-		
-	    $(".acces").css("width","auto")
-		$(".acces").css("height","auto")
-		$(".acces").css("background","none")		
+		}		
 	}
 }
 export default Access;

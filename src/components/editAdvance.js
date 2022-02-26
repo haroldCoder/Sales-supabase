@@ -41,7 +41,7 @@ export default class EditAdvance extends Component {
 	render(){
 		this.name = this.props.author;
 		return (
-			<div className="container">
+			<div className="container data-container">
 				<div class="card bg-primary">
 				<h5 class="card-header bg-dark">Modified Advanced</h5>
 				<div class="card-body">
@@ -60,7 +60,7 @@ export default class EditAdvance extends Component {
 					</div>
 					<textarea className="form-control mt-2" id="w3review" name="w3review" rows="4" cols="50">Write more information valuable</textarea>
 				<footer className="foot d-flex justify-content-center">
-					<button class="btn btn-primary" onClick={()=>this.submitInfo(this.props.name,this.props.email,this.props.imageUrl,this.props.render)}>Accept</button>
+					<button class="btn btn-primary" id="intro_input" onClick={()=>this.submitInfo(this.props.name,this.props.email,this.props.imageUrl,this.props.render)}>Accept</button>
 				</footer>
 				</form>
 				</div>
@@ -113,19 +113,35 @@ export default class EditAdvance extends Component {
 	}
 	Style = () =>{
 		$(".modified").remove()
-		$(".panelEA").css("position","absolute");
-		$(".panelEA").css("top","15%");
-		$(".panelEA").css("left","20%");
-		$(".panelEA > .container > .card").css("height","87vh");
-		$(".panelEA").css("width","70%");
 		$(".foot").css("position","sticky");
 		$(".foot").css("top","90%");
 		$("form").css("height","100%");
 		$(".itempay").css("width","16%");
 		$(".itempay").css("height","80px");
 		$(".itempay").css("cursor","pointer");
-		$(".panelEA").dblclick(()=>{
-			$(".panelEA").remove();
-		})
+		
+		if($(".acces").parent().attr("class") == "panel"){
+			$(".acces").css("position","relative");
+			$(".acces").css("top","9%");
+			$(".acces").css("left","0%");
+			$(".acces").css("width","70%")
+			$(".acces").css("height","auto")
+			$(".acces").css("background","none")
+			$(".acces").parent().on("click",()=>{
+				$(".acces").remove();
+			})
+		}
+		else{
+			$(".acces").parent().css("top","9%");
+			$(".acces").parent().css("left","4%");
+			$(".acces").parent().css("width","90%")
+			$(".acces").parent().css("height","auto")
+			$(".acces").css("background","none")
+			$(".acces").css("width","100%");
+			$(".acces").parent().on("click",()=>{
+				$(".acces").parent().remove();
+			})
+		}
+		
 	}
 }

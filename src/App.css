@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+body{
+  width: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -43,6 +47,15 @@
 .containe > .row > .card{
   margin: 1% 0% 1% 1.4%;
   height: 20.em !important;
+}
+#root > div{
+  width: 100%;
+}
+.main{
+  width: 100%;
+}
+.panel{
+  width: 100%;
 }
 .panel > .containe{
   margin: 0% .2% !important;
@@ -141,6 +154,9 @@
 button.cyan{
   position: relative;
   left: 40%;
+}
+#intro_input{
+  margin-top: 6%;
 }
 .btn-primary:hover{
   background-color: #008cff !important;

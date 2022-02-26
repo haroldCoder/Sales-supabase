@@ -157,7 +157,7 @@ export default class CreateP extends Component{
 		if(this.cookies.get("name") == null && this.cookies.get("email") == null){
 			$(".login").css("margin","0 1% 0 20%");
 			return(
-				<h2>hello</h2>
+				<Access />
 			);			
 		}
 		else{

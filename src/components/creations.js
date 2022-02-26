@@ -83,7 +83,6 @@ export class Creations extends Component{
 			$(".container").css("padding","30px 0 0 0");
 		}
 		else{
-			
 			$("body").css("background","#d9e3f1");
 			$(".containe").css("padding"," 10px 0 0 0");
 		    $(".containe > .row").css("height","100%");
