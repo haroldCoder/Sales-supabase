@@ -9,7 +9,8 @@ const product = new mongoose.Schema({
     "author": {type: String, required: false, unique: false},
     "price": {type: Object, required: false, unique: false},
     "category": {type: String, required: false, unique: false},
-    "arrayImg": {type: [String], required: true, unique: false}
+    "arrayImg": {type: [String], required: true, unique: false},
+    "buys": {type: Number, required: true, unique: false}
 })
 
 module.exports = mongoose.model("products",product);

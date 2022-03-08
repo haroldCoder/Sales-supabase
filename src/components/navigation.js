@@ -114,5 +114,8 @@ export class Navigation extends Component{
 		$(".use").css("font-size","7vh");
 		$(".use").css("color","#FFF");
 		$(".use").css("margin-right","20px");
+		$(".navbar").css("height","10.5vh");
+		$(".sales-brand").css("font-size","27px");
+		$(".navbar-nav > .nav-item").css("font-size","15px");
 	}
 }

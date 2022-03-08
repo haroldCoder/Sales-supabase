@@ -13,21 +13,25 @@ class Login extends Component{
 		data: [],
 		number: 0
 	}
-	componentDidMount(){
+	async componentDidMount(){
 		this.style()
+		this.getDataUsers()
+	}
+	async componentDidUpdate(){
 		this.getDataUsers()
 	}
 	getDataUsers = async() =>{
 		const res = await axios.get('http://localhost:8000/users');
 		this.setState({data: res.data});
+
+	}
+	render() {
 		let number = this.state.data.filter(e=>{
 			if(e.name == this.cookie.get("name")){
 				return e;
 			}
 		})
-		this.setState({number: number[0].number});
-	}
-	render() {
+		console.log(this.cookie.get("name"));
 		return(
 			<div className="plogin d-flex container m-2 p-5">
 				<i class="fa-solid fa-circle-xmark" style={{cursor: "pointer"}}></i>
@@ -64,6 +68,7 @@ class Login extends Component{
 		this.cookie.remove("name");
 		this.cookie.remove("email");
 		this.cookie.remove("imageurl");
+		
 	}
 	run = () =>{
 		this.cookie.remove("name");

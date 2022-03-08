@@ -138,9 +138,6 @@ export default class EditAdvance extends Component {
 			$(".acces").parent().css("height","auto")
 			$(".acces").css("background","none")
 			$(".acces").css("width","100%");
-			$(".acces").parent().on("click",()=>{
-				$(".acces").parent().remove();
-			})
 		}
 		
 	}

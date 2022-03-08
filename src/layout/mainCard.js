@@ -5,6 +5,7 @@ import Cookies from 'universal-cookie';
 import Pay from '../components/pay.js';
 import Access from '../layout/access.js';
 import axios from 'axios';
+import {Toaster} from 'react-hot-toast';
 
 class MainCard extends Component{
 	constructor(props){
@@ -30,6 +31,7 @@ class MainCard extends Component{
 	}
 	render(){ 
 		return(
+			<>
 			<div className="container window">
 				<div class="card mainc" style={{width: "18rem"}}>
 						<span class="material-icons close">cancel</span>
@@ -68,6 +70,7 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 					</div>
 				</div>
 			</div>
+		    </>
 		);
 	}
 	PayMent = (price,author,name) =>{
