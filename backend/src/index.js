@@ -5,7 +5,7 @@ const bodyParser =  require('body-parser');
 const app  =  express();
 const cors = require('cors')
 const mongoose = require('mongoose');
-app.use(cors())
+app.use(cors({origin: ['http://localhost:3000']}));
 app.use(express.json());
 const url = 'mongodb+srv://manuel:12345@702.s3tgn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const port =  8000;
@@ -102,19 +102,6 @@ connection.once('open',()=>{
 
 
 });*/
-const stripe = new Stripe('sk_test_51KDe8IB1qqz3uOspSqBs3qsaIehItIOlNnQMVayeVwcojS8rYoAHg3yPH7MsXoHOLO2YCI1Lz1hnwq3uMbQmNxL100xb84zMOC');
-app.post('/api/checkout', async(req,res)=>{
-       const {id, amount} = req.body;
-       const payment = await stripe.paymentIntents.create({
-           amount,
-           currency: "USD",
-           description: "product",
-           payment_method: id,
-           confirm: true
-       })
-       console.log(payment);
-       res.send("recived");
-    })
     app.listen(port, () => {
     console.log(`Server on port ${port}`);
 });
