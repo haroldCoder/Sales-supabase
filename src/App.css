@@ -60,6 +60,10 @@ body{
 .panel > .containe{
   margin: 0% .2% !important;
 }
+.cyan{
+  border-bottom: 4px solid #8888889a !important;
+  border-left: 6px solid #8888889a !important;
+}
 .cyan:hover{
   background-color: #71bfff !important;
 }
@@ -162,7 +166,13 @@ button.cyan{
   background-color: #008cff !important;
   color: #FFF !important;
 }
-@media  screen and (max-width: 600px) {
+@media  screen and (max-width: 1000px) and (min-width: 100px) {
+  .create{
+    flex-direction: column !important;
+  }
+  .file{
+    width: 100% !important;
+  }
   .cont{
     flex-flow: column;
     margin: 0 !important;

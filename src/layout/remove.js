@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
+import {supabase} from '../supabase/client'
 
 export default class Remove extends Component{
 	componentDidMount(){
@@ -12,8 +13,9 @@ export default class Remove extends Component{
 		data: []
 	}
 	getData = async() =>{
-		const res = await axios.get('http://localhost:8000/products');
+		const res = await supabase.from("Sales").select()
 		this.setState({data: res.data});
+		console.log(this.state.data);
 	}
 	remove = (title) =>{
 		return(
@@ -36,13 +38,12 @@ export default class Remove extends Component{
 			<this.remove name={this.props.title}/>
 		);
 	}
-	productRemove = (title) =>{
+	productRemove = async(title) =>{
 		let id = this.state.data.filter(e=>{
 			if(e.name == title.name)
 			  return e;
 		})
-		console.log(id[0]._id)
-		axios.delete('http://localhost:8000/products/'+id[0]._id);
+		await supabase.from("Sales").delete(id[0].id).eq("id", id[0].id)
 		$(".premove").remove()
 	}
 	Style = () =>{

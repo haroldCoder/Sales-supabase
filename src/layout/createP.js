@@ -8,6 +8,7 @@ import Cookies from 'universal-cookie';
 import { toast, Toaster } from 'react-hot-toast';
 import { publicEncrypt } from 'crypto';
 import Access from './access.js';
+import { supabase } from '../supabase/client.js';
 
 export default class CreateP extends Component{
 	constructor(props){
@@ -36,7 +37,7 @@ export default class CreateP extends Component{
 		category: ""
 	}
 	getData = async() =>{
-		const res = await axios.get('http://localhost:8000/products');
+		const res = await supabase.from("Sales").select()
 		this.setState({data: res.data});
 	}
 	onChangeName = (e) =>{
@@ -59,7 +60,7 @@ export default class CreateP extends Component{
 		}
 		if(create == true)
 			if(this.state.name != "" && this.state.description != ""){
-				await axios.post('http://localhost:8000/products',{
+				const res = await supabase.from("Sales").insert({
 				name: this.state.name,
 				description: this.state.description,
 				imgURI: localStorage.getItem("urichoose_file"),
@@ -69,6 +70,7 @@ export default class CreateP extends Component{
 				arrayImg: [localStorage.getItem("urichoose_file2"),localStorage.getItem("urichoose_file3"),localStorage.getItem("urichoose_file4")]
 				});
 				this.product = "Product Created";
+				console.log(res);
 			}
 			else
 				alert("Fill in all the fields");
@@ -78,15 +80,16 @@ export default class CreateP extends Component{
 					if(e.name == title)
 					return e;
 				})
-				await axios.put('http://localhost:8000/products/'+id[0]._id,{
-				name: this.state.name,
-				description: this.state.description,
-				imgURI: localStorage.getItem("urichoose_file"),
-				author: this.cookies.get("name"),
-				price: parseFloat(this.state.price).toFixed(2), 
-				category: this.state.category,
-				arrayImg: [localStorage.getItem("urichoose_file2"),localStorage.getItem("urichoose_file3"),localStorage.getItem("urichoose_file4")]
-				})
+				console.log(id[0].id);
+				await supabase.from("Sales").update({
+					name: this.state.name,
+					description: this.state.description,
+					imgURI: localStorage.getItem("urichoose_file"),
+					author: this.cookies.get("name"),
+					price: parseFloat(this.state.price).toFixed(2), 
+					category: this.state.category,
+					arrayImg: [localStorage.getItem("urichoose_file2"),localStorage.getItem("urichoose_file3"),localStorage.getItem("urichoose_file4")]
+				}).eq("id", id[0].id)
 				this.product = "Modified Product";
 		}
 		  this.setState({"name": ''});
@@ -181,8 +184,8 @@ export default class CreateP extends Component{
 		$(".create > .btn").css("width","20%");
 		$(".create > .btn").css("position","relative");
 		$(".create > .btn").css("left","40%");
-		$(".modified").one("dblclick",(e)=>{
-			$(".modified").remove()
+		$(".login").one("dblclick",(e)=>{
+			$(".login").remove()
 		})
 		$(".login").css("width", "60%");
 	}

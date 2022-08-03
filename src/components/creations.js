@@ -7,6 +7,7 @@ import axios from 'axios';
 import Card from '../layout/card.js';
 import Access from '../layout/access';
 import { isThisTypeNode } from 'typescript';
+import { supabase } from '../supabase/client';
 
 export class Creations extends Component{
 	constructor(props){
@@ -26,7 +27,7 @@ export class Creations extends Component{
 		inputname: ""
 	};
 	getProductCreate = async() =>{
-		const res = await axios.get('http://localhost:8000/products');
+		const res = await supabase.from("Sales").select()
 		this.setState({data: res.data});
 	}
 	onChangeInputName = (e) =>{

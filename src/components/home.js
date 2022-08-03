@@ -10,6 +10,7 @@ import axios from 'axios';
 import Card from '../layout/card.js';
 import Positioning from './positioning';
 import { Link } from 'react-router-dom';
+import { supabase } from '../supabase/client';
 
 export class Home extends Component{
 	constructor(props) {
@@ -30,7 +31,7 @@ export class Home extends Component{
 		data: []
 	}
 	getData = async() =>{
-		const res = await axios.get('http://localhost:8000/products');
+		const res = await supabase.from("Sales").select()
 		this.setState({data: res.data});
 	}
 	render(){
