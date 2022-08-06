@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
+import { supabase } from '../supabase/client';
 
 class Login extends Component{
 	constructor(props){
@@ -17,13 +18,9 @@ class Login extends Component{
 		this.style()
 		this.getDataUsers()
 	}
-	async componentDidUpdate(){
-		this.getDataUsers()
-	}
 	getDataUsers = async() =>{
-		const res = await axios.get('http://localhost:8000/users');
+		const res = await supabase.from("Userss").select();
 		this.setState({data: res.data});
-
 	}
 	render() {
 		let number = this.state.data.filter(e=>{
@@ -31,7 +28,6 @@ class Login extends Component{
 				return e;
 			}
 		})
-		console.log(this.cookie.get("name"));
 		return(
 			<div className="plogin d-flex container m-2 p-5">
 				<i class="fa-solid fa-circle-xmark" style={{cursor: "pointer"}}></i>
@@ -43,7 +39,7 @@ class Login extends Component{
 					<h4 className="m-2 text-dark">{this.cookie.get("name")}</h4>
 					<h4 className="m-2 text-dark">{this.cookie.get("email")}</h4>
 					<div className="number d-flex">
-						<i className="fab fa-whatsapp m-2" style={{fontSize: "40px"}}></i><h4 className="mt-3">{this.state.number}</h4>
+						<i className="fab fa-whatsapp m-2" style={{fontSize: "40px"}}></i><h4 className="mt-3">{this.cookie.get("number")}</h4>
 					</div>
 					
 				</section>
@@ -58,13 +54,13 @@ class Login extends Component{
 			</div>
 		)
 	}
-	remove = () =>{
-		let id = 0;
-		this.state.data.map(e=>{
+	remove = async() =>{
+		console.log(this.state.data);
+		const id = this.state.data.filter(e=>{
 			if(e.name == this.cookie.get("name"))
-			  id = e._id;
+				return e.id 
 		});
-		axios.delete('http://localhost:8000/users/'+id);
+		await supabase.from("Userss").delete().eq("id", id[0].id)
 		this.cookie.remove("name");
 		this.cookie.remove("email");
 		this.cookie.remove("imageurl");

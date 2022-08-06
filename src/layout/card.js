@@ -14,8 +14,9 @@ class Card extends Component{
 	render(){
 		return(
 			<div class="card bg-white" onClick={(e)=>this.cardMain(e,this.props.title,this.props.author,this.props.imgURI,this.props.description,this.props.price,this.props.arrayimg)}>
-               <div className="title">
-                <h5 class="card-header">{this.props.title}<h5 className="mt-1 text-primary">{this.props.author}</h5></h5>
+               <div className="title mb-4">
+                <h5 className='card-header d-flex'>{this.props.title}<b className='text-success' style={{marginLeft: "15px"}}> {this.props.price}$</b></h5>
+				<h5 className="mt-1 text-primary card-header">{this.props.author}</h5>
                </div>
 			   {
 				 this.props.remove ?

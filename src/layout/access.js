@@ -8,6 +8,7 @@ import {toast,Toaster} from 'react-hot-toast';
 import axios from 'axios';
 import App from '../App';
 import EditAdvance from '../components/editAdvance';
+import {supabase} from '../supabase/client';
 
 class Access extends Component{
 	constructor(props) {
@@ -49,8 +50,9 @@ class Access extends Component{
 		this.getData()
 	}
 	getData = async() =>{
-		const res = await axios.get('http://localhost:8000/users');
+		const res = await supabase.from("Userss").select()
 		this.setState({data: res.data});
+		console.log(this.state.data);
 	}
 	onChangeName = (e) =>{
 		this.setState({name: e.target.value});
@@ -104,11 +106,11 @@ class Access extends Component{
 				<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={this.onChangeEmail} value={this.state.email}/>
 			</div>
 			<div class="mb-3">
-				<label for="exampleInputPassword1" class="form-label">Password</label>
+				<label for="exampleInputPassword1" class="form-label">Password{this.props.render}</label>
 				<input type="password" class="form-control" id="exampleInputPassword1" onChange={this.onChangePassword} value={this.state.password}/>
 			</div>
 			<footer>
-			<button type="submit" onClick={(e)=>this.onSubmit(e,this.props.render)} class="btn-primary">LOGIN</button>
+			<button type="submit" onClick={(e)=>this.onSubmit(e,this.props.render)} class="btn-primary">LOGIN </button>
 			<GoogleLogin
 				clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
 				render={(renderProps) => (
@@ -127,9 +129,10 @@ class Access extends Component{
 		);	
 	}
 	responseGoogle = (res,render) =>{
-		let pos, i = 0;
+		let pos = 0;
+		let i = 0;
 		let b = 'F';
-
+		console.log(render);
 		while(i < this.state.data.length){
 			if(this.state.data[i].name == res.profileObj.name){
 				pos = i;
@@ -137,18 +140,22 @@ class Access extends Component{
 			}
 			i++;
 		}
-		if(this.state.data[pos].name == res.profileObj.name){
-			alert("logged in");
-			this.cookie.set("name", res.profileObj.name, { path: '/' });
-			this.cookie.set("email", res.profileObj.email, { path: '/' });
-			this.cookie.set("imageurl", res.profileObj.imageUrl, { path: '/' });
-		}
-		else{
+		console.log(pos);
+		try{
+			if(this.state.data[pos].name == res.profileObj.name){
+				alert("logged in");
+				this.cookie.set("name", res.profileObj.name, { path: '/' });
+				this.cookie.set("email", res.profileObj.email, { path: '/' });
+				this.cookie.set("imageurl", res.profileObj.imageUrl, { path: '/' });
+				console.log(res)
+			}
+	    }
+		catch (err){
 			ReactDOM.render(
 					<EditAdvance name={res.profileObj.name} email={res.profileObj.email} imageUrl={res.profileObj.imageUrl} render={render}/>,
 				document.querySelector(".acces")
 			);
-		}		
+	    }		
 	}
 }
 export default Access;

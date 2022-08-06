@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import $, { parseJSON } from 'jquery';
 import fs from 'fs';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
@@ -208,17 +208,23 @@ export default class CreateP extends Component{
 		    this.uploadFile('https://res.cloudinary.com/demo/image/upload/sample.jpg')
 		    e.preventDefault();
 		 }
-		 uploadFile = (file,sub) =>{
+		 uploadFile = async(file,sub) =>{
 			var url = `https://api.cloudinary.com/v1_1/${this.cloudName}/upload`;
 			var xhr = new XMLHttpRequest();
 			var fd = new FormData();
+			xhr.responseType = 'json';
 			xhr.open('POST', url, true);
 			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-			xhr.onreadystatechange = function(e){
-				 var response = JSON.parse(xhr.responseText)
-			     global.url1 = response.secure_url;
-				 console.log(sub);
-			     localStorage.setItem(`uri${sub}`,global.url1);
+			xhr.onreadystatechange = async function(e){
+			     var uri;
+				 try{
+					uri = e.response.url;
+					localStorage.setItem(`uri${sub}`,uri);
+				 }
+				 catch{
+					
+				 }
+				 
 			}
 			fd.append('upload_preset', this.unsignedUploadPreset);
 			fd.append('tags', 'browser_upload'); // Optional - add tag for image admin in Cloudinary

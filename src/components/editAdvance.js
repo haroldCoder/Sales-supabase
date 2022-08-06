@@ -8,6 +8,7 @@ import efecty from '../img/Efecty.jpg';
 import axios from 'axios';
 import Pay from './pay.js';
 import Cookies from 'universal-cookie';
+import { supabase } from '../supabase/client';
 
 export default class EditAdvance extends Component {
 	constructor(props) {
@@ -28,7 +29,7 @@ export default class EditAdvance extends Component {
 		name: '',
 	};
 	getData = async() =>{
-		const res = await axios.get('http://localhost:8000/users');
+		const res = await supabase.from("Userss").select();
 		this.setState({data: res.data});
 	}
 	onChangeNumber = (e) =>{
@@ -60,7 +61,7 @@ export default class EditAdvance extends Component {
 					</div>
 					<textarea className="form-control mt-2" id="w3review" name="w3review" rows="4" cols="50">Write more information valuable</textarea>
 				<footer className="foot d-flex justify-content-center">
-					<button class="btn btn-primary" id="intro_input" onClick={()=>this.submitInfo(this.props.name,this.props.email,this.props.imageUrl,this.props.render)}>Accept</button>
+					<button class="btn btn-primary" id="intro_input" onClick={()=>this.submitInfo(this.props.name,this.props.email,this.props.imageUrl)}>Accept</button>
 				</footer>
 				</form>
 				</div>
@@ -68,7 +69,7 @@ export default class EditAdvance extends Component {
 			</div>
 		);
 	}
-	submitInfo = (name,email,imageUrl,render) =>{
+	submitInfo = async(name,email,imageUrl) =>{
 		let pos, i = 0;
 		let b = 'F';
 		console.log(this.state.number);
@@ -86,27 +87,29 @@ export default class EditAdvance extends Component {
 		}
 		if(b == 'V'){
 			alert("logged in");
-			axios.put('http://localhost:8000/users/'+this.id[0]._id,{
+			supabase.from("Userss").update({
 			   number: this.state.number,
 			   idpay: this.state.ID
-		    });
+		    }).eq("id", this.id[0]._id);
+			this.cookie.set("number", this.state.number);
+			this.cookie.set('idpay', this.state.ID);
 		}
 		else{
-			axios.post('http://localhost:8000/users',{
+			const res = await supabase.from("Userss").insert({
 				"name": name,
 				"email": email,
 				"imageurl": imageUrl,
 				"number": this.state.number,
 				"idpay": this.state.ID
 	        });
-			
+			console.log(res);
 		}
 		this.cookie.set('idpay', this.state.ID);
 		this.cookie.set("name", name, { path: '/' });
 		this.cookie.set("email", email, { path: '/' });
 		this.cookie.set("imageurl", imageUrl, { path: '/' });
+		this.cookie.set("number", this.state.number);
 		$(".acces").remove();
-		console.log(render);
 		if(render){
 			window.location.reload();
 		}
