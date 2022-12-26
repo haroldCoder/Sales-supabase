@@ -78,13 +78,14 @@ export class Navigation extends Component{
 				</Nav>
 				<Outlet/>
 				<span class="material-icons use" onClick={this.user}>account_circle</span>
-				<Form className="d-flex">
+				<Form className="d-flex" style={{height: "6vh"}}>
 					<FormControl
 					type="search"
 					className="me-2"
 					aria-label="Search"
 					placeholder="search by name"
 					onChange={this.search.searchfor}
+					
 					/>
 					<Button className="btn-secondary" onClick={this.search.submitData}>Search</Button>
 				</Form>
@@ -111,7 +112,7 @@ export class Navigation extends Component{
 	}
 	Main = () =>{
 		$(".use").css("cursor","pointer");
-		$(".use").css("font-size","7vh");
+		$(".use").css("font-size","5vh");
 		$(".use").css("color","#FFF");
 		$(".use").css("margin-right","20px");
 		$(".navbar").css("height","10.5vh");
