@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Cookies from 'universal-cookie';
-import Pay from '../components/pay.js';
+import Pay from '../components/Pay.js';
 import Access from '../layout/access.js';
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';

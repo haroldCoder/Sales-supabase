@@ -5,10 +5,9 @@ import koder2 from '../img/koder2.png';
 import '@fortawesome/fontawesome-free';
 import Access from '../layout/access.js';
 import Cookies from 'universal-cookie';
-import Create from './products.create';
-import axios from 'axios';
+import Create from './Products.create';
 import Card from '../layout/card.js';
-import Positioning from './positioning';
+import Positioning from './Positioning';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabase/client';
 

@@ -4,7 +4,7 @@ import $, { param } from 'jquery';
 import {Dropdown} from 'react-bootstrap';
 import axios from 'axios';
 import Card from '../layout/card';
-import {Home} from './home';
+import {Home} from './Home';
 
 class Positioning extends Component{
 	constructor(props){

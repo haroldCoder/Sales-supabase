@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import {GoogleLogin, GoogleLogout} from 'react-google-login';
+import {GoogleLogin} from 'react-google-login';
 import google from '../img/google.ico'
 import Cookies from 'universal-cookie';
 import {toast,Toaster} from 'react-hot-toast';
-import axios from 'axios';
-import App from '../App';
-import EditAdvance from '../components/editAdvance';
+import EditAdvance from '../components/EditAdvance';
 import {supabase} from '../supabase/client';
 
 class Access extends Component{

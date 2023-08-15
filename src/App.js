@@ -2,13 +2,13 @@ import './App.css';
 import React, {useEffect} from 'react';
 import $ from 'jquery';
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
-import { Home } from './components/home.js';
-import Example from './components/example.js';
-import { Navigation } from './components/navigation.js';
-import { About } from './components/about.js';
-import { Creations } from './components/creations.js';
+import { Home } from './components/Home';
+import Example from './components/Example';
+import { Navigation } from './components/Navigation';
+import { About } from './components/About.js';
+import { Creations } from './components/Creations.js';
 import {Toaster} from 'react-hot-toast';
-import Categories from './components/categories.js';
+import Categories from './components/Categories';
 import CreateP from './layout/createP';
 
 function App() {
