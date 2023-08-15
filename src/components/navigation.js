@@ -22,7 +22,7 @@ export class Navigation extends Component{
 	}
 	render(){
 		return(
-			<Navbar bg="primary" className="navbar navbar-expand-lg navbar-dark" expand="lg">
+			<Navbar className="navbar navbar-expand-lg bg-light" expand="lg">
 			<Container fluid>
 				<Navbar.Brand className="text-light sales-brand" bg="light">SalesK</Navbar.Brand>
 				<Navbar.Toggle aria-controls="navbarScroll" />
@@ -44,15 +44,15 @@ export class Navigation extends Component{
 						<li className="nav-item">
 						<Link className="nav-link" to="/about">About</Link>
 						</li>
-						<Dropdown className="nav-item item1">
-						<DropdownToggle id="btn-e" className="text-white nav-link dropdown-toggle tex-white" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</DropdownToggle>
-						<DropdownMenu className="dropdown-menu submenu1">
+						<Dropdown className="nav-item item1 ml-2">
+						<DropdownToggle id="btn-e" className="text-white bg-secondary rounded nav-link mr-2 dropdown-toggle tex-white" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</DropdownToggle>
+						<DropdownMenu className="dropdown-menu submenu1 ">
 							<Link className="dropdown-item" id="onl" to="/">products online</Link>
 							<Link className="dropdown-item" id="exa" to="/examples">product examples</Link>
 						</DropdownMenu>
 						</Dropdown>
-						<Dropdown className="nav-item" id="item">
-						<DropdownToggle id="btn-e" className="text-white nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category</DropdownToggle>
+						<Dropdown className="nav-item mr-2 " style={{marginLeft: "10px"}} id="item">
+						<DropdownToggle id="btn-e" className="text-white bg-secondary rounded nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category</DropdownToggle>
 						<DropdownMenu className="dropdown-menu" id="submenu">
 							<Link className="dropdown-item" to="/*/foot">Foot</Link>
 							<Link className="dropdown-item" to="/*/tecnology">Tecnology</Link>
@@ -65,14 +65,6 @@ export class Navigation extends Component{
 							<Link className="dropdown-item" to="/*/children">Children</Link>
 							<Link className="dropdown-item" to="/*/construction">Construction</Link>
 						</DropdownMenu>
-						</Dropdown>
-						<Dropdown className="nav-item item3">
-							<DropdownToggle id="btn-e" className=" text-white nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">settings</DropdownToggle>
-							<DropdownMenu className="dropdown-menu submenu3">
-								<p className="bg-secondary">mode</p>
-								<button className="dropdown-item bg-dark" onClick={() =>{$("body").removeClass("bg-secondary"); $("body").addClass("bg-dark"); $(".card").removeClass("bg-white"); $(".card").addClass("bg-dark")}}>mode dark</button>
-								<button className="dropdown-item bg-light" onClick={()=>{$("body").removeClass("bg-dark"); $("body").css("background","#d9e3f1");  $(".card").removeClass("bg-dark")}}>mode light</button>
-							</DropdownMenu>
 						</Dropdown>
 					</ul>
 				</Nav>

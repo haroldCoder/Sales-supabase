@@ -66,7 +66,7 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 						    }
 						</div>
 						<p class="card-text text-cm">{this.props.description}</p>
-						<a href="#" class="btn btn-dark buy" onClick={()=>this.PayMent(this.props.price,this.props.author, this.props.title)}>Buy</a>
+						<button class="btn btn-dark buy" style={{position: "sticky", left: "90%"}} onClick={()=>this.PayMent(this.props.price,this.props.author, this.props.title)}>Buy</button>
 					</div>
 				</div>
 			</div>
@@ -139,8 +139,6 @@ the price of this product is: <p className='text-primary'>{this.props.price}$</p
 		$(".close").on("click",()=>{
 			$(".pmainc").remove();
 		})
-		$(".buy").css("position","relative");
-		$(".buy").css("left","39%");
 		$(".buy").css("top","87%");
 		$(".buy").css("width","20%");
 		$(".buy").css("margin", "5% 0 0");
